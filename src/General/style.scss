@@ -1,0 +1,21 @@
+//@import "../components/";
+
+/* - Common settings - */
+
+@import "./reset";
+@import "./vars";
+@import "./common";
+
+/* ------------------- */
+
+// import 'Mainpage' style
+@import "../components/mainpage/mainpage";
+
+// import 'Dela' style
+// @import "../components/dela/dela";
+
+// import 'Garderob' style
+// @import "../components/garderob/garderob";
+
+// import 'Proboval' style
+// @import "../components/proboval/proboval";

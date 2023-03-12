@@ -1,0 +1,88 @@
+/*==========Var==========Start*/
+
+$color-1: rgb(166,255,0);
+$color-2: rgb(255,200,91);
+$color-3: rgb(30,225,255);
+
+// Desktop-font
+$biggest-font: 60px;
+
+$main-title-size: 34px;
+$sub-title-size: 28px;
+
+$big-text-size: 26px;
+$mid-text-size: 22px;
+$sml-text-size: 18px;
+
+// Mobile-font
+$M-main-title-size: 30px;
+$M-sub-title-size: 26px;
+
+$M-big-text-size: 24px;
+$M-mid-text-size: 20px;
+$M-sml-text-size: 16px;
+
+/*==========Var==========End*/
+
+
+
+/*==========Mixin==========Start*/
+
+@mixin grid_template($template) { 
+//@include grid_template($template);
+// Просто грид сетка
+
+  display: grid;
+  grid-template: $template;
+}
+
+@mixin grid_center($template) {
+//@include grid_center($template);
+//Выравнит вертикально и горизонтально
+
+  display: grid;
+  grid-template: $template;
+  align-items: center;
+  text-align: center;
+}
+
+@mixin grid_items( $j-items, $a-items) { 
+//@include grid_items($j-items, $a-items);
+//Выравнивание содержимого
+
+  justify-items: $j-items; //горизонтальное выравнивание содержимого
+  align-items: $a-items; //вертикальное выравнивание содержимого
+  //значения: start, end, center
+}
+
+@mixin grid_self( $j-self, $a-self) { 
+//@include grid_self( $j-self, $a-self);
+//Выравнивание содержимого конкретного self
+  
+  justify-self: $j-self; //горизонтальное выравнивание содержимого
+  align-self: $a-self; //вертикальное выравнивание содержимого
+  //значения: start, end, center
+}
+
+@mixin grid_content($j-content, $a-content) { 
+//@include grid_content($j-content, $a-content);
+//Выравнивание сетки
+
+  justify-content: $j-content; //горизонтальное выравнивание сетки
+  align-content: $a-content; //вертикальное выравнивание сетки
+  //значения: start, end, center, stretch, space-around, space-evenly, space-between
+}
+
+@mixin grid_auto-fit($auto-fit-width, $auto-fit-gap) { 
+//@include grid_auto-fit($auto-fit-width, $auto-fit-gap);
+//карточки которые будут переноситься вниз при нехватке места
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, $auto-fit-width);
+  gap: $auto-fit-gap;
+  justify-content: space-evenly;
+
+  //создает карточки заданной ширины и заданным гэпом
+}
+
+/*==========Mixin==========End*/

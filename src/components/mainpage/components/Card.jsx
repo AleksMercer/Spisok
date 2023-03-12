@@ -1,0 +1,27 @@
+import React from 'react'
+
+/* image import */
+import SpisokIMG from './../media/spisokH.webp'
+
+
+function Card(props) {
+
+  return (
+    <div className={props.className}>
+      <div className='filter'>
+
+        <div className='header'>
+          <img className='spisokIMG' src={SpisokIMG} alt="" />
+          <img className='subbrandIMG' src={props.picture} alt="" />
+        </div>
+        
+        <div className='description'>{props.description}</div>
+
+        <button className='button'><img src={props.picture} alt="" /></button>
+
+      </div>
+    </div>
+  )
+}
+
+export default Card

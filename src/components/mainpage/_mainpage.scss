@@ -1,0 +1,107 @@
+.mainpage {
+  height: 100%;
+  width: 100%;
+
+  color: white;
+
+  background: url('/src/components/mainpage/media/spisokD.webp');
+  background-size: 5%;
+  background-color: black;
+
+  @include grid_template(90% / repeat(3, 30%));
+  @include grid_content(space-evenly, center);
+
+  .proboval {
+    background: url('/src/components/mainpage/media/probovalD.webp');
+    
+    .filter {
+      border: 7px double rgb(166,255,0);
+    }
+  }
+
+  .garderob {
+    background: url('/src/components/mainpage/media/garderobD.webp');
+
+    .filter {
+      border: 7px double rgb(255,200,91);
+    }
+  }
+
+  .dela {
+    background: url('/src/components/mainpage/media/delaD.webp');
+
+    .filter {
+      border: 7px double rgb(30,225,255);
+    }
+  }
+
+  .proboval, .garderob, .dela {
+    background-size: 10%;
+    background-color: black;
+    border-radius: 18% / 10%;
+
+    .filter {
+      height: 100%;
+      padding: 5%;
+
+      @include grid_center(1fr / 1fr);
+      //@include grid_items(center, center);
+      //@include grid_content(center, center);
+
+      border-radius: 18% / 10%;
+      backdrop-filter: blur(5px);
+      transition: all linear 0.2s;
+
+      .header {
+        @include grid_center(repeat(2, auto) / 1fr);
+        @include grid_items(center, center);
+
+        .spisokIMG {
+          max-width: 80%;
+          transition: all linear 0.2s;
+        }
+
+        .subbrandIMG {
+          max-width: 75%;
+          transition: all linear 0.2s;
+        }
+      }
+
+      .description, .button {
+        display: none;
+      }
+    }
+
+    .filter:hover {
+      @include grid_center( 0.1fr 1fr 0.1fr / 1fr);
+
+      .header {
+
+        .spisokIMG {
+          max-width: 50%;
+          transition: all linear 0.2s;
+        }
+
+        .subbrandIMG {
+          max-width: 45%;
+          transition: all linear 0.2s;
+        }
+      }
+
+      .description, .button {
+        display: block;
+      }
+
+      .button {
+        img {
+          max-width: 40%;
+
+          background-color: rgba(0, 0, 0, 0.7);
+          border-radius: 10% / 30%;
+          border: 1px solid rgb(255, 255, 255);
+        }
+      }
+    }
+  }
+}
+

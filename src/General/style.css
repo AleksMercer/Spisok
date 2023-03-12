@@ -1,0 +1,226 @@
+/* - Common settings - */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+  outline: 0;
+  font-size: 100%;
+  vertical-align: baseline;
+  background: transparent;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+* {
+  padding: 0px;
+  margin: 0px;
+  border: 0px;
+}
+
+body {
+  line-height: 1;
+  -ms-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+ol, ul, li {
+  list-style: none;
+}
+
+img {
+  vertical-align: top;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after, q:before, q:after {
+  content: "";
+  content: none;
+}
+
+ins {
+  text-decoration: none;
+}
+
+del {
+  text-decoration: line-through;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input::-ms-clear {
+  display: none;
+}
+
+input, button, textarea {
+  font-size: inherit;
+}
+
+button {
+  cursor: pointer;
+  color: inherit;
+  background-color: inherit;
+}
+
+button::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+:focus, :active {
+  outline: none;
+}
+
+a:focus, a:active {
+  outline: none;
+}
+
+a {
+  color: inherit;
+}
+
+a:link, a:visited, a:hover {
+  text-decoration: none;
+}
+
+/*==========Var==========Start*/
+/*==========Var==========End*/
+/*==========Mixin==========Start*/
+/*==========Mixin==========End*/
+html, body, #root {
+  height: 100%;
+  width: 100%;
+}
+
+/* ------------------- */
+.mainpage {
+  height: 100%;
+  width: 100%;
+  color: white;
+  background: url("/src/components/mainpage/media/spisokD.webp");
+  background-size: 5%;
+  background-color: black;
+  display: grid;
+  grid-template: 90%/repeat(3, 30%);
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  -ms-flex-line-pack: center;
+      align-content: center;
+}
+.mainpage .proboval {
+  background: url("/src/components/mainpage/media/probovalD.webp");
+}
+.mainpage .proboval .filter {
+  border: 7px double rgb(166, 255, 0);
+}
+.mainpage .garderob {
+  background: url("/src/components/mainpage/media/garderobD.webp");
+}
+.mainpage .garderob .filter {
+  border: 7px double rgb(255, 200, 91);
+}
+.mainpage .dela {
+  background: url("/src/components/mainpage/media/delaD.webp");
+}
+.mainpage .dela .filter {
+  border: 7px double rgb(30, 225, 255);
+}
+.mainpage .proboval, .mainpage .garderob, .mainpage .dela {
+  background-size: 10%;
+  background-color: black;
+  border-radius: 18%/10%;
+}
+.mainpage .proboval .filter, .mainpage .garderob .filter, .mainpage .dela .filter {
+  height: 100%;
+  padding: 5%;
+  display: grid;
+  grid-template: 1;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  border-radius: 18%/10%;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  -webkit-transition: all linear 0.2s;
+  -o-transition: all linear 0.2s;
+  transition: all linear 0.2s;
+}
+.mainpage .proboval .filter .header, .mainpage .garderob .filter .header, .mainpage .dela .filter .header {
+  display: grid;
+  grid-template: repeat(2, auto)/1fr;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  justify-items: center;
+  align-items: center;
+}
+.mainpage .proboval .filter .header .spisokIMG, .mainpage .garderob .filter .header .spisokIMG, .mainpage .dela .filter .header .spisokIMG {
+  max-width: 80%;
+  -webkit-transition: all linear 0.2s;
+  -o-transition: all linear 0.2s;
+  transition: all linear 0.2s;
+}
+.mainpage .proboval .filter .header .subbrandIMG, .mainpage .garderob .filter .header .subbrandIMG, .mainpage .dela .filter .header .subbrandIMG {
+  max-width: 75%;
+  -webkit-transition: all linear 0.2s;
+  -o-transition: all linear 0.2s;
+  transition: all linear 0.2s;
+}
+.mainpage .proboval .filter .description, .mainpage .proboval .filter .button, .mainpage .garderob .filter .description, .mainpage .garderob .filter .button, .mainpage .dela .filter .description, .mainpage .dela .filter .button {
+  display: none;
+}
+.mainpage .proboval .filter:hover, .mainpage .garderob .filter:hover, .mainpage .dela .filter:hover {
+  display: grid;
+  grid-template: 0.1fr 1fr 0.1fr/1fr;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+}
+.mainpage .proboval .filter:hover .header .spisokIMG, .mainpage .garderob .filter:hover .header .spisokIMG, .mainpage .dela .filter:hover .header .spisokIMG {
+  max-width: 50%;
+  -webkit-transition: all linear 0.2s;
+  -o-transition: all linear 0.2s;
+  transition: all linear 0.2s;
+}
+.mainpage .proboval .filter:hover .header .subbrandIMG, .mainpage .garderob .filter:hover .header .subbrandIMG, .mainpage .dela .filter:hover .header .subbrandIMG {
+  max-width: 45%;
+  -webkit-transition: all linear 0.2s;
+  -o-transition: all linear 0.2s;
+  transition: all linear 0.2s;
+}
+.mainpage .proboval .filter:hover .description, .mainpage .proboval .filter:hover .button, .mainpage .garderob .filter:hover .description, .mainpage .garderob .filter:hover .button, .mainpage .dela .filter:hover .description, .mainpage .dela .filter:hover .button {
+  display: block;
+}
+.mainpage .proboval .filter:hover .button img, .mainpage .garderob .filter:hover .button img, .mainpage .dela .filter:hover .button img {
+  max-width: 40%;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10%/30%;
+  border: 1px solid rgb(255, 255, 255);
+}
