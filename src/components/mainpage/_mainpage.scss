@@ -15,7 +15,14 @@
     background: url('/src/components/mainpage/media/probovalD.webp');
     
     .filter {
-      border: 7px double rgb(166,255,0);
+      border: 7px double $proboval-clr;
+    }
+
+    .filter:hover {
+      .button > img {
+        border: 1px solid $proboval-clr;
+      }
+
     }
   }
 
@@ -23,7 +30,13 @@
     background: url('/src/components/mainpage/media/garderobD.webp');
 
     .filter {
-      border: 7px double rgb(255,200,91);
+      border: 7px double $garderob-clr;
+    }
+
+    .filter:hover {
+      .button > img {
+        border: 1px solid $garderob-clr;
+      }
     }
   }
 
@@ -31,77 +44,110 @@
     background: url('/src/components/mainpage/media/delaD.webp');
 
     .filter {
-      border: 7px double rgb(30,225,255);
+      border: 7px double $dela-clr;
+    }
+
+    .filter:hover {
+      .button > img {
+        border: 1px solid $dela-clr;
+      }
     }
   }
 
   .proboval, .garderob, .dela {
     background-size: 10%;
     background-color: black;
-    border-radius: 18% / 10%;
+    border-radius: 12% / 8%;
 
     .filter {
       height: 100%;
       padding: 5%;
-
-      @include grid_center(1fr / 1fr);
-      //@include grid_items(center, center);
-      //@include grid_content(center, center);
-
-      border-radius: 18% / 10%;
-      backdrop-filter: blur(5px);
-      transition: all linear 0.2s;
+      border-radius: 12% / 8%;
 
       .header {
         @include grid_center(repeat(2, auto) / 1fr);
         @include grid_items(center, center);
-
-        .spisokIMG {
-          max-width: 80%;
-          transition: all linear 0.2s;
-        }
-
-        .subbrandIMG {
-          max-width: 75%;
-          transition: all linear 0.2s;
-        }
-      }
-
-      .description, .button {
-        display: none;
-      }
-    }
-
-    .filter:hover {
-      @include grid_center( 0.1fr 1fr 0.1fr / 1fr);
-
-      .header {
-
-        .spisokIMG {
-          max-width: 50%;
-          transition: all linear 0.2s;
-        }
-
-        .subbrandIMG {
-          max-width: 45%;
-          transition: all linear 0.2s;
-        }
-      }
-
-      .description, .button {
-        display: block;
-      }
-
-      .button {
-        img {
-          max-width: 40%;
-
-          background-color: rgba(0, 0, 0, 0.7);
-          border-radius: 10% / 30%;
-          border: 1px solid rgb(255, 255, 255);
-        }
       }
     }
   }
 }
 
+/* Card-animation */
+
+.proboval, .garderob, .dela {
+  .filter {
+    @include grid_center(1fr 0fr 0fr / 1fr);
+    backdrop-filter: blur(5px);
+
+    transition: all linear 0.3s 0.2s;
+
+    .header {
+
+      .spisokIMG {
+        max-width: 80%;
+        transition: all linear 0.25s 0.25s;
+      }
+
+      .subbrandIMG {
+        max-width: 75%;
+        transition: all linear 0.25s 0.25s;
+      }
+    }
+
+    .description {
+      font-size: 0%;
+      color: rgba(255, 255, 255, 0);
+      transition: font-size linear 0.1s 0.1s, color linear 0.1s;
+    }
+
+    .button {
+      img {
+        max-width: 0%;
+        transition: all ease-out 0.2s;
+      }
+    }
+  }
+
+  .filter:hover {
+    @include grid_center( 0fr 1fr 0fr / 1fr);
+    backdrop-filter: blur(8px);
+
+    transition: all linear 0.3s;
+
+    .header {
+
+      .spisokIMG {
+        max-width: 50%;
+        transition: all linear 0.25s;
+      }
+
+      .subbrandIMG {
+        max-width: 45%;
+        transition: all linear 0.25s;
+      }
+    }
+
+    .description {
+      font-size: $middle-font;
+      
+      line-height: 30px;
+      letter-spacing: 0.75px;
+      word-spacing: 2px;
+
+      color: white;
+
+      transition: font-size linear 0.3s, color linear 0.5s 0.3s;
+    }
+
+    .button {
+      img {
+        max-width: 40%;
+
+        border-radius: 8% / 25%;
+        background-color: rgba(0, 0, 0, 0.75);
+
+        transition: all ease-out 0.15s 0.3s;
+      }
+    }
+  }
+}

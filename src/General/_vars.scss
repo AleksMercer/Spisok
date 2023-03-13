@@ -1,18 +1,21 @@
 /*==========Var==========Start*/
 
-$color-1: rgb(166,255,0);
-$color-2: rgb(255,200,91);
-$color-3: rgb(30,225,255);
+$proboval-clr: rgb(166,255,0);
+$garderob-clr: rgb(255,200,91);
+$dela-clr: rgb(30,225,255);
 
 // Desktop-font
-$biggest-font: 60px;
 
-$main-title-size: 34px;
-$sub-title-size: 28px;
+$title-font: 200%;          //32px
+$title-font-rem: 2rem;      //32px
 
-$big-text-size: 26px;
-$mid-text-size: 22px;
-$sml-text-size: 18px;
+$standart-font: 100%;       //16px?
+$middle-font: 125%;         //20px
+$large-font: 150%;          //24px
+
+$standart-font-rem: 1rem;   //16px
+$middle-rem: 1.25rem;       //20px
+$large-rem: 1.5rem;         //24px
 
 // Mobile-font
 $M-main-title-size: 30px;

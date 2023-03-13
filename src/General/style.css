@@ -137,11 +137,17 @@ html, body, #root {
 .mainpage .proboval .filter {
   border: 7px double rgb(166, 255, 0);
 }
+.mainpage .proboval .filter:hover .button > img {
+  border: 1px solid rgb(166, 255, 0);
+}
 .mainpage .garderob {
   background: url("/src/components/mainpage/media/garderobD.webp");
 }
 .mainpage .garderob .filter {
   border: 7px double rgb(255, 200, 91);
+}
+.mainpage .garderob .filter:hover .button > img {
+  border: 1px solid rgb(255, 200, 91);
 }
 .mainpage .dela {
   background: url("/src/components/mainpage/media/delaD.webp");
@@ -149,26 +155,18 @@ html, body, #root {
 .mainpage .dela .filter {
   border: 7px double rgb(30, 225, 255);
 }
+.mainpage .dela .filter:hover .button > img {
+  border: 1px solid rgb(30, 225, 255);
+}
 .mainpage .proboval, .mainpage .garderob, .mainpage .dela {
   background-size: 10%;
   background-color: black;
-  border-radius: 18%/10%;
+  border-radius: 12%/8%;
 }
 .mainpage .proboval .filter, .mainpage .garderob .filter, .mainpage .dela .filter {
   height: 100%;
   padding: 5%;
-  display: grid;
-  grid-template: 1;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  text-align: center;
-  border-radius: 18%/10%;
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
-  -webkit-transition: all linear 0.2s;
-  -o-transition: all linear 0.2s;
-  transition: all linear 0.2s;
+  border-radius: 12%/8%;
 }
 .mainpage .proboval .filter .header, .mainpage .garderob .filter .header, .mainpage .dela .filter .header {
   display: grid;
@@ -180,47 +178,86 @@ html, body, #root {
   justify-items: center;
   align-items: center;
 }
-.mainpage .proboval .filter .header .spisokIMG, .mainpage .garderob .filter .header .spisokIMG, .mainpage .dela .filter .header .spisokIMG {
-  max-width: 80%;
-  -webkit-transition: all linear 0.2s;
-  -o-transition: all linear 0.2s;
-  transition: all linear 0.2s;
-}
-.mainpage .proboval .filter .header .subbrandIMG, .mainpage .garderob .filter .header .subbrandIMG, .mainpage .dela .filter .header .subbrandIMG {
-  max-width: 75%;
-  -webkit-transition: all linear 0.2s;
-  -o-transition: all linear 0.2s;
-  transition: all linear 0.2s;
-}
-.mainpage .proboval .filter .description, .mainpage .proboval .filter .button, .mainpage .garderob .filter .description, .mainpage .garderob .filter .button, .mainpage .dela .filter .description, .mainpage .dela .filter .button {
-  display: none;
-}
-.mainpage .proboval .filter:hover, .mainpage .garderob .filter:hover, .mainpage .dela .filter:hover {
+
+/* Card-animation */
+.proboval .filter, .garderob .filter, .dela .filter {
   display: grid;
-  grid-template: 0.1fr 1fr 0.1fr/1fr;
+  grid-template: 1fr 0fr 0fr/1fr;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   text-align: center;
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  -webkit-transition: all linear 0.3s 0.2s;
+  -o-transition: all linear 0.3s 0.2s;
+  transition: all linear 0.3s 0.2s;
 }
-.mainpage .proboval .filter:hover .header .spisokIMG, .mainpage .garderob .filter:hover .header .spisokIMG, .mainpage .dela .filter:hover .header .spisokIMG {
+.proboval .filter .header .spisokIMG, .garderob .filter .header .spisokIMG, .dela .filter .header .spisokIMG {
+  max-width: 80%;
+  -webkit-transition: all linear 0.25s 0.25s;
+  -o-transition: all linear 0.25s 0.25s;
+  transition: all linear 0.25s 0.25s;
+}
+.proboval .filter .header .subbrandIMG, .garderob .filter .header .subbrandIMG, .dela .filter .header .subbrandIMG {
+  max-width: 75%;
+  -webkit-transition: all linear 0.25s 0.25s;
+  -o-transition: all linear 0.25s 0.25s;
+  transition: all linear 0.25s 0.25s;
+}
+.proboval .filter .description, .garderob .filter .description, .dela .filter .description {
+  font-size: 0%;
+  color: rgba(255, 255, 255, 0);
+  -webkit-transition: font-size linear 0.1s 0.1s, color linear 0.1s;
+  -o-transition: font-size linear 0.1s 0.1s, color linear 0.1s;
+  transition: font-size linear 0.1s 0.1s, color linear 0.1s;
+}
+.proboval .filter .button img, .garderob .filter .button img, .dela .filter .button img {
+  max-width: 0%;
+  -webkit-transition: all ease-out 0.2s;
+  -o-transition: all ease-out 0.2s;
+  transition: all ease-out 0.2s;
+}
+.proboval .filter:hover, .garderob .filter:hover, .dela .filter:hover {
+  display: grid;
+  grid-template: 0fr 1fr 0fr/1fr;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  -webkit-transition: all linear 0.3s;
+  -o-transition: all linear 0.3s;
+  transition: all linear 0.3s;
+}
+.proboval .filter:hover .header .spisokIMG, .garderob .filter:hover .header .spisokIMG, .dela .filter:hover .header .spisokIMG {
   max-width: 50%;
-  -webkit-transition: all linear 0.2s;
-  -o-transition: all linear 0.2s;
-  transition: all linear 0.2s;
+  -webkit-transition: all linear 0.25s;
+  -o-transition: all linear 0.25s;
+  transition: all linear 0.25s;
 }
-.mainpage .proboval .filter:hover .header .subbrandIMG, .mainpage .garderob .filter:hover .header .subbrandIMG, .mainpage .dela .filter:hover .header .subbrandIMG {
+.proboval .filter:hover .header .subbrandIMG, .garderob .filter:hover .header .subbrandIMG, .dela .filter:hover .header .subbrandIMG {
   max-width: 45%;
-  -webkit-transition: all linear 0.2s;
-  -o-transition: all linear 0.2s;
-  transition: all linear 0.2s;
+  -webkit-transition: all linear 0.25s;
+  -o-transition: all linear 0.25s;
+  transition: all linear 0.25s;
 }
-.mainpage .proboval .filter:hover .description, .mainpage .proboval .filter:hover .button, .mainpage .garderob .filter:hover .description, .mainpage .garderob .filter:hover .button, .mainpage .dela .filter:hover .description, .mainpage .dela .filter:hover .button {
-  display: block;
+.proboval .filter:hover .description, .garderob .filter:hover .description, .dela .filter:hover .description {
+  font-size: 125%;
+  line-height: 30px;
+  letter-spacing: 0.75px;
+  word-spacing: 2px;
+  color: white;
+  -webkit-transition: font-size linear 0.3s, color linear 0.5s 0.3s;
+  -o-transition: font-size linear 0.3s, color linear 0.5s 0.3s;
+  transition: font-size linear 0.3s, color linear 0.5s 0.3s;
 }
-.mainpage .proboval .filter:hover .button img, .mainpage .garderob .filter:hover .button img, .mainpage .dela .filter:hover .button img {
+.proboval .filter:hover .button img, .garderob .filter:hover .button img, .dela .filter:hover .button img {
   max-width: 40%;
-  background-color: rgba(0, 0, 0, 0.7);
-  border-radius: 10%/30%;
-  border: 1px solid rgb(255, 255, 255);
+  border-radius: 8%/25%;
+  background-color: rgba(0, 0, 0, 0.75);
+  -webkit-transition: all ease-out 0.15s 0.3s;
+  -o-transition: all ease-out 0.15s 0.3s;
+  transition: all ease-out 0.15s 0.3s;
 }
