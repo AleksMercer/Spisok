@@ -1,21 +1,23 @@
 {
   "files": {
-    "main.css": "/Spisok/static/css/main.3f8686af.css",
-    "main.js": "/Spisok/static/js/main.8061582a.js",
+    "main.css": "/Spisok/static/css/main.ea8238fe.css",
+    "main.js": "/Spisok/static/js/main.7f575546.js",
     "static/media/garderobH.webp": "/Spisok/static/media/garderobH.1f0241750bad5586a7df.webp",
     "static/media/probovalH.webp": "/Spisok/static/media/probovalH.06692e2b0a7b92f23c61.webp",
     "static/media/spisokH.webp": "/Spisok/static/media/spisokH.d255ef5b5525fa5b25b2.webp",
     "static/media/delaH.webp": "/Spisok/static/media/delaH.452ea3ed4bc931235155.webp",
+    "static/media/404.webp": "/Spisok/static/media/404.7f193c05e709d215bad1.webp",
     "static/media/probovalD.webp": "/Spisok/static/media/probovalD.fba15d71e8f073bad1fc.webp",
     "static/media/garderobD.webp": "/Spisok/static/media/garderobD.7970089b402646a321f4.webp",
+    "static/media/SpisokD.webp": "/Spisok/static/media/SpisokD.2e252fc8c5acf7a48244.webp",
     "static/media/spisokD.webp": "/Spisok/static/media/spisokD.2e252fc8c5acf7a48244.webp",
     "static/media/delaD.webp": "/Spisok/static/media/delaD.69897a05def5136e442e.webp",
     "index.html": "/Spisok/index.html",
-    "main.3f8686af.css.map": "/Spisok/static/css/main.3f8686af.css.map",
-    "main.8061582a.js.map": "/Spisok/static/js/main.8061582a.js.map"
+    "main.ea8238fe.css.map": "/Spisok/static/css/main.ea8238fe.css.map",
+    "main.7f575546.js.map": "/Spisok/static/js/main.7f575546.js.map"
   },
   "entrypoints": [
-    "static/css/main.3f8686af.css",
-    "static/js/main.8061582a.js"
+    "static/css/main.ea8238fe.css",
+    "static/js/main.7f575546.js"
   ]
 }
