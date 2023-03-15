@@ -1,0 +1,31 @@
+.error {
+  height: 100%;
+  width: 100%;
+
+  background: url('/src/components/404error/media/SpisokD.webp');
+  background-size: 5%;
+  background-color: black;
+
+  .filter {
+    height: 100%;
+    width: 100%;  
+
+    @include grid_template( repeat(2, auto) / 1fr);
+    row-gap: 3%;
+    backdrop-filter: blur(10px);
+    
+    img {
+      @include grid_self(center, end);
+
+      max-width: 20%;
+    }
+
+    p {
+      @include grid_self(center, start);
+
+      font-family: 'Roboto';
+      font-size: $large-font;
+      font-weight: 400;
+    }
+  }
+}

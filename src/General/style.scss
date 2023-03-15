@@ -2,11 +2,14 @@
 
 /* - Common settings - */
 
-@import "./reset";
-@import "./vars";
-@import "./common";
+@import "../scss/reset";
+@import "../scss/vars";
+@import "../scss/common";
 
 /* ------------------- */
+
+// import '404error' style
+@import "../components/404error/404";
 
 // import 'Mainpage' style
 @import "../components/mainpage/mainpage";

@@ -1,4 +1,5 @@
 /* - Common settings - */
+@import url("https://fonts.googleapis.com/css2?family=Edu+SA+Beginner&family=Roboto:wght@100;300;400&display=swap");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -113,13 +114,44 @@ a:link, a:visited, a:hover {
 html, body, #root {
   height: 100%;
   width: 100%;
+  color: white;
 }
 
 /* ------------------- */
+.error {
+  height: 100%;
+  width: 100%;
+  background: url("/src/components/404error/media/SpisokD.webp");
+  background-size: 5%;
+  background-color: black;
+}
+.error .filter {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template: repeat(2, auto)/1fr;
+  row-gap: 3%;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+.error .filter img {
+  justify-self: center;
+  -ms-flex-item-align: end;
+      align-self: end;
+  max-width: 20%;
+}
+.error .filter p {
+  justify-self: center;
+  -ms-flex-item-align: start;
+      align-self: start;
+  font-family: "Roboto";
+  font-size: 150%;
+  font-weight: 400;
+}
+
 .mainpage {
   height: 100%;
   width: 100%;
-  color: white;
   background: url("/src/components/mainpage/media/spisokD.webp");
   background-size: 5%;
   background-color: black;
@@ -178,6 +210,28 @@ html, body, #root {
   justify-items: center;
   align-items: center;
 }
+.mainpage .proboval .filter .description, .mainpage .garderob .filter .description, .mainpage .dela .filter .description {
+  font-family: "Edu SA Beginner";
+}
+.mainpage .designed {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+      -ms-transform: translateX(-50%);
+          transform: translateX(-50%);
+  z-index: 1;
+  font-family: "Roboto";
+  font-size: 100%;
+  font-weight: 300;
+  white-space: nowrap;
+  letter-spacing: 1px;
+  word-spacing: 1px;
+}
+.mainpage .designed span {
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
 
 /* Card-animation */
 .proboval .filter, .garderob .filter, .dela .filter {
@@ -227,9 +281,9 @@ html, body, #root {
   text-align: center;
   -webkit-backdrop-filter: blur(8px);
           backdrop-filter: blur(8px);
-  -webkit-transition: all linear 0.3s;
-  -o-transition: all linear 0.3s;
-  transition: all linear 0.3s;
+  -webkit-transition: all linear 0.2s;
+  -o-transition: all linear 0.2s;
+  transition: all linear 0.2s;
 }
 .proboval .filter:hover .header .spisokIMG, .garderob .filter:hover .header .spisokIMG, .dela .filter:hover .header .spisokIMG {
   max-width: 50%;
@@ -246,8 +300,13 @@ html, body, #root {
 .proboval .filter:hover .description, .garderob .filter:hover .description, .dela .filter:hover .description {
   font-size: 125%;
   line-height: 30px;
-  letter-spacing: 0.75px;
+  letter-spacing: 1px;
   word-spacing: 2px;
+  -webkit-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -moz-user-select: none;
+  -khtml-user-select: none;
   color: white;
   -webkit-transition: font-size linear 0.3s, color linear 0.5s 0.3s;
   -o-transition: font-size linear 0.3s, color linear 0.5s 0.3s;

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom";
 
 /* image import */
 import SpisokIMG from './../media/spisokH.webp'
@@ -17,7 +18,7 @@ function Card(props) {
         
         <div className='description'>{props.description}</div>
 
-        <button className='button'><img src={props.picture} alt="" /></button>
+        <Link to={props.urlpath} className='button'><img src={props.picture} alt="" /></Link>
 
       </div>
     </div>

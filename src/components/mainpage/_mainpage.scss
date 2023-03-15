@@ -2,8 +2,6 @@
   height: 100%;
   width: 100%;
 
-  color: white;
-
   background: url('/src/components/mainpage/media/spisokD.webp');
   background-size: 5%;
   background-color: black;
@@ -68,6 +66,30 @@
         @include grid_center(repeat(2, auto) / 1fr);
         @include grid_items(center, center);
       }
+
+      .description {
+        font-family: 'Edu SA Beginner';
+      }
+    }
+  }
+
+  .designed {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+
+    font-family: 'Roboto';
+    font-size: $standart-font;
+    font-weight: 300;
+
+    white-space: nowrap;
+    letter-spacing: 1px;
+    word-spacing: 1px;
+
+    span {
+      backdrop-filter: blur(10px);
     }
   }
 }
@@ -112,7 +134,7 @@
     @include grid_center( 0fr 1fr 0fr / 1fr);
     backdrop-filter: blur(8px);
 
-    transition: all linear 0.3s;
+    transition: all linear 0.2s;
 
     .header {
 
@@ -131,8 +153,12 @@
       font-size: $middle-font;
       
       line-height: 30px;
-      letter-spacing: 0.75px;
+      letter-spacing: 1px;
       word-spacing: 2px;
+
+      user-select: none; 
+      -moz-user-select: none; 
+      -khtml-user-select: none; 
 
       color: white;
 
