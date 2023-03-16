@@ -2,21 +2,21 @@
   height: 100%;
   width: 100%;
 
-  background: url('/src/components/mainpage/media/spisokD.webp');
+  background: url('../components/mainpage/media/SpisokD.webp');
   background-size: 5%;
   background-color: black;
 
   @include grid_template(90% / repeat(3, 30%));
   @include grid_content(space-evenly, center);
 
-  .proboval {
+  .proboval-card {
     background: url('/src/components/mainpage/media/probovalD.webp');
     
-    .filter {
+    .wrapper {
       border: 7px double $proboval-clr;
     }
 
-    .filter:hover {
+    .wrapper:hover {
       .button > img {
         border: 1px solid $proboval-clr;
       }
@@ -24,40 +24,40 @@
     }
   }
 
-  .garderob {
+  .garderob-card {
     background: url('/src/components/mainpage/media/garderobD.webp');
 
-    .filter {
+    .wrapper {
       border: 7px double $garderob-clr;
     }
 
-    .filter:hover {
+    .wrapper:hover {
       .button > img {
         border: 1px solid $garderob-clr;
       }
     }
   }
 
-  .dela {
+  .dela-card {
     background: url('/src/components/mainpage/media/delaD.webp');
 
-    .filter {
+    .wrapper {
       border: 7px double $dela-clr;
     }
 
-    .filter:hover {
+    .wrapper:hover {
       .button > img {
         border: 1px solid $dela-clr;
       }
     }
   }
 
-  .proboval, .garderob, .dela {
+  .proboval-card, .garderob-card, .dela-card {
     background-size: 10%;
     background-color: black;
     border-radius: 12% / 8%;
 
-    .filter {
+    .wrapper {
       height: 100%;
       padding: 5%;
       border-radius: 12% / 8%;
@@ -96,11 +96,14 @@
 
 /* Card-animation */
 
-.proboval, .garderob, .dela {
-  .filter {
-    @include grid_center(1fr 0fr 0fr / 1fr);
-    backdrop-filter: blur(5px);
+.proboval-card, .garderob-card, .dela-card {
 
+  .filter {
+    backdrop-filter: blur(5px);
+  }
+
+  .wrapper {
+    @include grid_center(1fr 0fr 0fr / 1fr);
     transition: all linear 0.3s 0.2s;
 
     .header {
@@ -131,9 +134,11 @@
   }
 
   .filter:hover {
-    @include grid_center( 0fr 1fr 0fr / 1fr);
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(5px);
+  }
 
+  .wrapper:hover {
+    @include grid_center( 0fr 1fr 0fr / 1fr);
     transition: all linear 0.2s;
 
     .header {

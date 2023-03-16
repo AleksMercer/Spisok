@@ -9,7 +9,7 @@ function Card(props) {
 
   return (
     <div className={props.className}>
-      <div className='filter'>
+      <div className='filter wrapper'>
 
         <div className='header'>
           <img className='spisokIMG' src={SpisokIMG} alt="" />

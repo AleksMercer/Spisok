@@ -2,8 +2,22 @@
 
 html, body, #root {
 	height: 100%;
-	width: 100%;
 
 	color: white;
 }
 
+// common apps settings 
+
+.proboval-app, .garderob-app, .dela-app {
+	height: 100%;
+
+  .filter {
+    height: 100%;
+
+    backdrop-filter: blur(10px);
+  }
+
+  .wrapper {
+    @include grid_template(1fr / 0.25fr 1fr 0.25fr);
+  }
+}

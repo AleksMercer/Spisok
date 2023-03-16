@@ -113,8 +113,20 @@ a:link, a:visited, a:hover {
 /*==========Mixin==========End*/
 html, body, #root {
   height: 100%;
-  width: 100%;
   color: white;
+}
+
+.proboval-app, .garderob-app, .dela-app {
+  height: 100%;
+}
+.proboval-app .filter, .garderob-app .filter, .dela-app .filter {
+  height: 100%;
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+}
+.proboval-app .wrapper, .garderob-app .wrapper, .dela-app .wrapper {
+  display: grid;
+  grid-template: 1fr/0.25fr 1fr 0.25fr;
 }
 
 /* ------------------- */
@@ -152,7 +164,7 @@ html, body, #root {
 .mainpage {
   height: 100%;
   width: 100%;
-  background: url("/src/components/mainpage/media/spisokD.webp");
+  background: url("../components/mainpage/media/SpisokD.webp");
   background-size: 5%;
   background-color: black;
   display: grid;
@@ -163,44 +175,44 @@ html, body, #root {
   -ms-flex-line-pack: center;
       align-content: center;
 }
-.mainpage .proboval {
+.mainpage .proboval-card {
   background: url("/src/components/mainpage/media/probovalD.webp");
 }
-.mainpage .proboval .filter {
+.mainpage .proboval-card .wrapper {
   border: 7px double rgb(166, 255, 0);
 }
-.mainpage .proboval .filter:hover .button > img {
+.mainpage .proboval-card .wrapper:hover .button > img {
   border: 1px solid rgb(166, 255, 0);
 }
-.mainpage .garderob {
+.mainpage .garderob-card {
   background: url("/src/components/mainpage/media/garderobD.webp");
 }
-.mainpage .garderob .filter {
+.mainpage .garderob-card .wrapper {
   border: 7px double rgb(255, 200, 91);
 }
-.mainpage .garderob .filter:hover .button > img {
+.mainpage .garderob-card .wrapper:hover .button > img {
   border: 1px solid rgb(255, 200, 91);
 }
-.mainpage .dela {
+.mainpage .dela-card {
   background: url("/src/components/mainpage/media/delaD.webp");
 }
-.mainpage .dela .filter {
+.mainpage .dela-card .wrapper {
   border: 7px double rgb(30, 225, 255);
 }
-.mainpage .dela .filter:hover .button > img {
+.mainpage .dela-card .wrapper:hover .button > img {
   border: 1px solid rgb(30, 225, 255);
 }
-.mainpage .proboval, .mainpage .garderob, .mainpage .dela {
+.mainpage .proboval-card, .mainpage .garderob-card, .mainpage .dela-card {
   background-size: 10%;
   background-color: black;
   border-radius: 12%/8%;
 }
-.mainpage .proboval .filter, .mainpage .garderob .filter, .mainpage .dela .filter {
+.mainpage .proboval-card .wrapper, .mainpage .garderob-card .wrapper, .mainpage .dela-card .wrapper {
   height: 100%;
   padding: 5%;
   border-radius: 12%/8%;
 }
-.mainpage .proboval .filter .header, .mainpage .garderob .filter .header, .mainpage .dela .filter .header {
+.mainpage .proboval-card .wrapper .header, .mainpage .garderob-card .wrapper .header, .mainpage .dela-card .wrapper .header {
   display: grid;
   grid-template: repeat(2, auto)/1fr;
   -webkit-box-align: center;
@@ -210,7 +222,7 @@ html, body, #root {
   justify-items: center;
   align-items: center;
 }
-.mainpage .proboval .filter .description, .mainpage .garderob .filter .description, .mainpage .dela .filter .description {
+.mainpage .proboval-card .wrapper .description, .mainpage .garderob-card .wrapper .description, .mainpage .dela-card .wrapper .description {
   font-family: "Edu SA Beginner";
 }
 .mainpage .designed {
@@ -234,70 +246,74 @@ html, body, #root {
 }
 
 /* Card-animation */
-.proboval .filter, .garderob .filter, .dela .filter {
+.proboval-card .filter, .garderob-card .filter, .dela-card .filter {
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+}
+.proboval-card .wrapper, .garderob-card .wrapper, .dela-card .wrapper {
   display: grid;
   grid-template: 1fr 0fr 0fr/1fr;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   text-align: center;
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
   -webkit-transition: all linear 0.3s 0.2s;
   -o-transition: all linear 0.3s 0.2s;
   transition: all linear 0.3s 0.2s;
 }
-.proboval .filter .header .spisokIMG, .garderob .filter .header .spisokIMG, .dela .filter .header .spisokIMG {
+.proboval-card .wrapper .header .spisokIMG, .garderob-card .wrapper .header .spisokIMG, .dela-card .wrapper .header .spisokIMG {
   max-width: 80%;
   -webkit-transition: all linear 0.25s 0.25s;
   -o-transition: all linear 0.25s 0.25s;
   transition: all linear 0.25s 0.25s;
 }
-.proboval .filter .header .subbrandIMG, .garderob .filter .header .subbrandIMG, .dela .filter .header .subbrandIMG {
+.proboval-card .wrapper .header .subbrandIMG, .garderob-card .wrapper .header .subbrandIMG, .dela-card .wrapper .header .subbrandIMG {
   max-width: 75%;
   -webkit-transition: all linear 0.25s 0.25s;
   -o-transition: all linear 0.25s 0.25s;
   transition: all linear 0.25s 0.25s;
 }
-.proboval .filter .description, .garderob .filter .description, .dela .filter .description {
+.proboval-card .wrapper .description, .garderob-card .wrapper .description, .dela-card .wrapper .description {
   font-size: 0%;
   color: rgba(255, 255, 255, 0);
   -webkit-transition: font-size linear 0.1s 0.1s, color linear 0.1s;
   -o-transition: font-size linear 0.1s 0.1s, color linear 0.1s;
   transition: font-size linear 0.1s 0.1s, color linear 0.1s;
 }
-.proboval .filter .button img, .garderob .filter .button img, .dela .filter .button img {
+.proboval-card .wrapper .button img, .garderob-card .wrapper .button img, .dela-card .wrapper .button img {
   max-width: 0%;
   -webkit-transition: all ease-out 0.2s;
   -o-transition: all ease-out 0.2s;
   transition: all ease-out 0.2s;
 }
-.proboval .filter:hover, .garderob .filter:hover, .dela .filter:hover {
+.proboval-card .filter:hover, .garderob-card .filter:hover, .dela-card .filter:hover {
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+}
+.proboval-card .wrapper:hover, .garderob-card .wrapper:hover, .dela-card .wrapper:hover {
   display: grid;
   grid-template: 0fr 1fr 0fr/1fr;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
   text-align: center;
-  -webkit-backdrop-filter: blur(8px);
-          backdrop-filter: blur(8px);
   -webkit-transition: all linear 0.2s;
   -o-transition: all linear 0.2s;
   transition: all linear 0.2s;
 }
-.proboval .filter:hover .header .spisokIMG, .garderob .filter:hover .header .spisokIMG, .dela .filter:hover .header .spisokIMG {
+.proboval-card .wrapper:hover .header .spisokIMG, .garderob-card .wrapper:hover .header .spisokIMG, .dela-card .wrapper:hover .header .spisokIMG {
   max-width: 50%;
   -webkit-transition: all linear 0.25s;
   -o-transition: all linear 0.25s;
   transition: all linear 0.25s;
 }
-.proboval .filter:hover .header .subbrandIMG, .garderob .filter:hover .header .subbrandIMG, .dela .filter:hover .header .subbrandIMG {
+.proboval-card .wrapper:hover .header .subbrandIMG, .garderob-card .wrapper:hover .header .subbrandIMG, .dela-card .wrapper:hover .header .subbrandIMG {
   max-width: 45%;
   -webkit-transition: all linear 0.25s;
   -o-transition: all linear 0.25s;
   transition: all linear 0.25s;
 }
-.proboval .filter:hover .description, .garderob .filter:hover .description, .dela .filter:hover .description {
+.proboval-card .wrapper:hover .description, .garderob-card .wrapper:hover .description, .dela-card .wrapper:hover .description {
   font-size: 125%;
   line-height: 30px;
   letter-spacing: 1px;
@@ -312,11 +328,29 @@ html, body, #root {
   -o-transition: font-size linear 0.3s, color linear 0.5s 0.3s;
   transition: font-size linear 0.3s, color linear 0.5s 0.3s;
 }
-.proboval .filter:hover .button img, .garderob .filter:hover .button img, .dela .filter:hover .button img {
+.proboval-card .wrapper:hover .button img, .garderob-card .wrapper:hover .button img, .dela-card .wrapper:hover .button img {
   max-width: 40%;
   border-radius: 8%/25%;
   background-color: rgba(0, 0, 0, 0.75);
   -webkit-transition: all ease-out 0.15s 0.3s;
   -o-transition: all ease-out 0.15s 0.3s;
   transition: all ease-out 0.15s 0.3s;
+}
+
+.dela-app {
+  background: url("/src/components/dela/media/delaD.webp");
+  background-size: 5%;
+  background-color: black;
+}
+
+.garderob-app {
+  background: url("/src/components/garderob/media/garderobD.webp");
+  background-size: 5%;
+  background-color: black;
+}
+
+.proboval-app {
+  background: url("/src/components/proboval/media/probovalD.webp");
+  background-size: 5%;
+  background-color: black;
 }
