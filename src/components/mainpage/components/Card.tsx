@@ -1,18 +1,14 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 
-/* image import */
-import SpisokIMG from './../media/spisokH.webp'
-
-
-function Card(props) {
+function Card(props: any) {
 
   return (
     <div className={props.className}>
       <div className='filter wrapper'>
 
         <div className='header'>
-          <img className='spisokIMG' src={SpisokIMG} alt="" />
+          <img className='spisokIMG' src={require("./../media/spisokH.webp")} alt="" />
           <img className='subbrandIMG' src={props.picture} alt="" />
         </div>
         

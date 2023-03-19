@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 import General from './General/General';
 
 const root = ReactDOM.createRoot(
-  document.getElementById('root')
+  document.getElementById('root') as HTMLElement
 );
 
 root.render(
