@@ -10,14 +10,42 @@ html, body, #root {
 
 .proboval-app, .garderob-app, .dela-app {
 	height: 100%;
+  
+  * {
+    font-family: 'Roboto';
+    font-size: $standart-font;
+    font-weight: 300;
+    
+    letter-spacing: 0.08rem;
+    word-spacing: 0.1rem;
+
+    ::-webkit-scrollbar {
+      width: 4px;
+      background-color: #00000000;
+    }
+    
+    ::-webkit-scrollbar-thumb {
+      border-radius: 2px;
+      background-color: #535353;
+    }
+  }
 
   .filter {
     height: 100%;
-
     backdrop-filter: blur(10px);
   }
 
   .wrapper {
-    @include grid_template(1fr / 0.25fr 1fr 0.25fr);
+    @include grid_template(1fr / 0.35fr 1fr 0.35fr);
+    column-gap: 1%;
+    padding: 1%;
+  }
+
+  .wrapper > .left-part, .right-part, .middle-part {
+    background-color: rgba(0, 0, 0, 0.65);
+  }
+
+  .icons { //invert all icons like: plus, ?, arrow and etc.
+    filter: invert(100%);
   }
 }

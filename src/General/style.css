@@ -119,6 +119,21 @@ html, body, #root {
 .proboval-app, .garderob-app, .dela-app {
   height: 100%;
 }
+.proboval-app *, .garderob-app *, .dela-app * {
+  font-family: "Roboto";
+  font-size: 100%;
+  font-weight: 300;
+  letter-spacing: 0.08rem;
+  word-spacing: 0.1rem;
+}
+.proboval-app * ::-webkit-scrollbar, .garderob-app * ::-webkit-scrollbar, .dela-app * ::-webkit-scrollbar {
+  width: 4px;
+  background-color: rgba(0, 0, 0, 0);
+}
+.proboval-app * ::-webkit-scrollbar-thumb, .garderob-app * ::-webkit-scrollbar-thumb, .dela-app * ::-webkit-scrollbar-thumb {
+  border-radius: 2px;
+  background-color: #535353;
+}
 .proboval-app .filter, .garderob-app .filter, .dela-app .filter {
   height: 100%;
   -webkit-backdrop-filter: blur(10px);
@@ -126,7 +141,18 @@ html, body, #root {
 }
 .proboval-app .wrapper, .garderob-app .wrapper, .dela-app .wrapper {
   display: grid;
-  grid-template: 1fr/0.25fr 1fr 0.25fr;
+  grid-template: 1fr/0.35fr 1fr 0.35fr;
+  -webkit-column-gap: 1%;
+     -moz-column-gap: 1%;
+          column-gap: 1%;
+  padding: 1%;
+}
+.proboval-app .wrapper > .left-part, .proboval-app .right-part, .proboval-app .middle-part, .garderob-app .wrapper > .left-part, .garderob-app .right-part, .garderob-app .middle-part, .dela-app .wrapper > .left-part, .dela-app .right-part, .dela-app .middle-part {
+  background-color: rgba(0, 0, 0, 0.65);
+}
+.proboval-app .icons, .garderob-app .icons, .dela-app .icons {
+  -webkit-filter: invert(100%);
+          filter: invert(100%);
 }
 
 /* ------------------- */
@@ -340,17 +366,283 @@ html, body, #root {
 .dela-app {
   background: url("/src/components/dela/media/delaD.webp");
   background-size: 5%;
-  background-color: black;
+  background-color: #1a1a1a;
+}
+
+.left-part {
+  display: grid;
+  grid-template: auto 1fr auto/1fr;
+  height: 96.5vh;
+  row-gap: 1%;
+  padding: 2%;
+}
+.left-part header {
+  display: grid;
+  grid-template: 1fr/1fr auto;
+}
+.left-part header .app-name {
+  max-width: 30%;
+}
+.left-part header .info-btn {
+  -webkit-transition: all linear 0.2s;
+  -o-transition: all linear 0.2s;
+  transition: all linear 0.2s;
+}
+.left-part header .info-btn img {
+  height: 100%;
+}
+.left-part header .info-btn:hover {
+  background-color: rgb(255, 255, 255);
+  -webkit-transition: all linear 0.25s;
+  -o-transition: all linear 0.25s;
+  transition: all linear 0.25s;
+}
+.left-part header .info-btn:hover img {
+  -webkit-filter: invert(0%);
+          filter: invert(0%);
+}
+.left-part main {
+  display: grid;
+  grid-template: repeat(auto-fit, auto)/1fr;
+  -ms-flex-line-pack: start;
+      align-content: start;
+  row-gap: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 4%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 100%;
+}
+.left-part main .folder {
+  display: grid;
+  grid-template: auto 1fr auto/1fr;
+  row-gap: 0.8rem;
+}
+.left-part main .folder__name, .left-part main .folder__group-list, .left-part main .folder__group {
+  overflow: hidden;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+}
+.left-part main .folder__name {
+  font-size: 125%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+.left-part main .folder__group-list {
+  display: grid;
+  grid-template: repeat(auto-fit, auto)/1fr;
+  row-gap: 0.3rem;
+}
+.left-part main .folder__group {
+  font-size: 100%;
+}
+.left-part main .folder__new-group-btn {
+  display: grid;
+  grid-template: auto/1fr auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+  padding: 0.5%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  -webkit-transition: all linear 0.2s;
+  -o-transition: all linear 0.2s;
+  transition: all linear 0.2s;
+}
+.left-part main .folder__new-group-btn p {
+  font-weight: 400;
+  font-size: 100%;
+}
+.left-part main .folder__new-group-btn img {
+  max-width: 50%;
+}
+.left-part main .folder__new-group-btn:hover {
+  background-color: rgb(255, 255, 255);
+  -webkit-transition: all linear 0.25s;
+  -o-transition: all linear 0.25s;
+  transition: all linear 0.25s;
+}
+.left-part main .folder__new-group-btn:hover p {
+  color: black;
+}
+.left-part main .folder__new-group-btn:hover .icons {
+  -webkit-filter: invert(0%);
+          filter: invert(0%);
+}
+.left-part footer {
+  display: grid;
+  grid-template: 1;
+}
+.left-part footer .new-folder-btn {
+  display: grid;
+  grid-template: 1fr/1fr auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+  font-weight: 400;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  -webkit-transition: all linear 0.2s;
+  -o-transition: all linear 0.2s;
+  transition: all linear 0.2s;
+}
+.left-part footer .new-folder-btn p {
+  font-weight: 400;
+  font-size: 125%;
+}
+.left-part footer .new-folder-btn:hover {
+  background-color: rgb(255, 255, 255);
+  -webkit-transition: all linear 0.25s;
+  -o-transition: all linear 0.25s;
+  transition: all linear 0.25s;
+}
+.left-part footer .new-folder-btn:hover p {
+  color: black;
+}
+.left-part footer .new-folder-btn:hover .icons {
+  -webkit-filter: invert(0%);
+          filter: invert(0%);
+}
+
+.middle-part {
+  display: grid;
+  grid-template: auto 1fr auto/1fr;
+  height: 96.5vh;
+  row-gap: 1%;
+  padding: 2.3% 0.7% 0.6% 0.7%;
+}
+.middle-part header {
+  display: grid;
+  grid-template: 1fr/1fr auto;
+  font-size: 200%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.middle-part main {
+  display: grid;
+  grid-template: repeat(auto-fit, auto)/1fr;
+  -ms-flex-line-pack: start;
+      align-content: start;
+  row-gap: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 100%;
+}
+.middle-part main .list-element {
+  display: grid;
+  grid-template: auto/1fr auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding-left: 1%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+.middle-part main .list-element__text {
+  font-weight: 300;
+  font-size: 125%;
+}
+.middle-part main .list-element__check-btn img {
+  max-width: 80%;
+}
+.middle-part footer {
+  display: grid;
+  grid-template: 1;
+}
+.middle-part footer .new-folder-btn {
+  display: grid;
+  grid-template: 1fr/1fr auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+  font-weight: 400;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  -webkit-transition: all linear 0.2s;
+  -o-transition: all linear 0.2s;
+  transition: all linear 0.2s;
+}
+.middle-part footer .new-folder-btn p {
+  font-weight: 400;
+  font-size: 125%;
+}
+.middle-part footer .new-folder-btn:hover {
+  background-color: rgb(255, 255, 255);
+  -webkit-transition: all linear 0.25s;
+  -o-transition: all linear 0.25s;
+  transition: all linear 0.25s;
+}
+.middle-part footer .new-folder-btn:hover p {
+  color: black;
+}
+.middle-part footer .new-folder-btn:hover .icons {
+  -webkit-filter: invert(0%);
+          filter: invert(0%);
+}
+
+.right-part {
+  display: grid;
+  grid-template: auto 1fr auto/1fr;
+  height: 96.5vh;
+  row-gap: 1%;
+  padding: 2%;
+}
+.right-part header {
+  display: grid;
+  grid-template: 1fr/1fr auto;
+  font-size: 200%;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+.right-part main {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: 100%;
+}
+.right-part footer {
+  display: grid;
+  grid-template: 1;
+}
+.right-part footer .delete-btn {
+  display: grid;
+  grid-template: 1fr/1fr auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+  font-weight: 400;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  -webkit-transition: all linear 0.2s;
+  -o-transition: all linear 0.2s;
+  transition: all linear 0.2s;
+}
+.right-part footer .delete-btn p {
+  font-weight: 400;
+  font-size: 125%;
+}
+.right-part footer .delete-btn:hover {
+  background-color: rgb(255, 255, 255);
+  -webkit-transition: all linear 0.25s;
+  -o-transition: all linear 0.25s;
+  transition: all linear 0.25s;
+}
+.right-part footer .delete-btn:hover p {
+  color: black;
+}
+.right-part footer .delete-btn:hover .icons {
+  -webkit-filter: invert(0%);
+          filter: invert(0%);
 }
 
 .garderob-app {
   background: url("/src/components/garderob/media/garderobD.webp");
-  background-size: 5%;
+  background-size: 6%;
   background-color: black;
 }
 
 .proboval-app {
   background: url("/src/components/proboval/media/probovalD.webp");
-  background-size: 5%;
+  background-size: 6%;
   background-color: black;
 }
