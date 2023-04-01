@@ -2,278 +2,44 @@
   background: url('/src/components/dela/media/delaD.webp');
   background-size: 5%;
   background-color: #1a1a1a;
-}
 
-.left-part {
-  @include grid_template(auto 1fr auto / 1fr );
-  height: 96.5vh;
-  row-gap: 1%;
-  padding: 2%;
+  .left-part {
 
-  header { // app pic + info
-    @include grid_template(1fr / 1fr auto );
-
-    .app-name {
-      max-width: 30%;
+    header > .app-name  {
+      max-width: 25%;  
     }
-
-    .info-btn {
-      transition: all linear 0.2s;
-      img {
-        height: 100%;
-      }
-    }
-
-    .info-btn:hover {
-      background-color: rgb(255, 255, 255);
-      transition: all linear 0.25s;
-
-      img {
-        filter: invert(0%);
-      }
+  
+    main { // folders + group 
     }
   }
-
-  main { // folders + group
-    @include grid_template( repeat(auto-fit, auto) / 1fr );
-    align-content: start;
-    row-gap: 1.25rem;
-
-    border: $thin-border;
-    padding: 4%;
-    
-    overflow-x: hidden;
-    overflow-y: auto;
-    
-    max-height: 100%;
-
-    .folder {
-      @include grid_template( auto 1fr auto / 1fr );
-      row-gap: 0.8rem;
-
-      &__name, &__group-list, &__group {
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-      }
-
-      &__name {
-        font-size: $middle-font;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.5);
-      }
-
-      &__group-list {
-        @include grid_template( repeat(auto-fit, auto) / 1fr );
-        row-gap: 0.3rem;
-      }
-
-      &__group {
-        font-size: $standart-font;
-      }
-
-      &__new-group-btn {
+  
+  .middle-part {
+    main {
+      .list-element {
         @include grid_template( auto / 1fr auto );
         align-items: center;
-        justify-items: center;
 
-        padding: 0.5%;
-        border: $thin-border;
-        transition: all linear 0.2s;
+        padding-left: 1%;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+
+        &__text {
+          @include textellipsis();
+
+          font-weight: 300;
+          font-size: $middle-font;
+        }
+
+        &__check-btn {
+          
+          img {
+          }
+        }
+      }
+    }
+  }
   
-        p {
-          font-weight: 400;
-          font-size: $standart-font;
-        }
-
-        img {
-          max-width: 50%;
-        }
-      }
-
-      &__new-group-btn:hover {
-        background-color: rgb(255, 255, 255);
-        transition: all linear 0.25s;
-  
-        p {
-          color: black;
-        }
-  
-        .icons {
-          filter: invert(0%);
-        }
-      }
-    }
-  }
-
-  footer { // btn 'add new folder'
-    @include grid_template( 1fr / 1fr );
-
-    .new-folder-btn {
-      @include grid_template( 1fr / 1fr auto );
-      align-items: center;
-      justify-items: center;
-
-      font-weight: 400;
-      border: $thin-border;
-
-      transition: all linear 0.2s;
-
-      p {
-        font-weight: 400;
-        font-size: $middle-font;
-      }
-    }
-
-    .new-folder-btn:hover {
-      background-color: rgb(255, 255, 255);
-      transition: all linear 0.25s;
-
-      p {
-        color: black;
-      }
-
-      .icons {
-        filter: invert(0%);
-      }
-    }
-  }
-}
-
-.middle-part {
-  @include grid_template(auto 1fr auto / 1fr );
-  height: 96.5vh;
-  row-gap: 1%;
-  padding: 2.3% 0.7% 0.6% 0.7%;
-
-  header {
-    @include grid_template( 1fr / 1fr auto );
-
-    font-size: $title-font;
-    border-bottom: $thin-border;
-  }
-
-  main {
-    @include grid_template( repeat(auto-fit, auto) / 1fr );
-    align-content: start;
-    row-gap: 1.25rem;
-
-    border: $thin-border;
-    padding: 1%;
-    
-    overflow-x: hidden;
-    overflow-y: auto;
-    
-    max-height: 100%;
-
-    .list-element {
-      @include grid_template( auto / 1fr auto );
-      align-items: center;
-
-      padding-left: 1%;
-      border: 1px solid rgba(255, 255, 255, 0.5);
-
-      &__text {
-        font-weight: 300;
-        font-size: $middle-font;
-      }
-
-      &__check-btn {
-        
-        img {
-          max-width: 80%;
-        }
-      }
-    }
-  }
-
-  footer { 
-    @include grid_template( 1fr / 1fr );
-
-    .new-folder-btn {
-      @include grid_template( 1fr / 1fr auto );
-      align-items: center;
-      justify-items: center;
-
-      font-weight: 400;
-      border: $thin-border;
-
-      transition: all linear 0.2s;
-
-      p {
-        font-weight: 400;
-        font-size: $middle-font;
-      }
-    }
-
-    .new-folder-btn:hover {
-      background-color: rgb(255, 255, 255);
-      transition: all linear 0.25s;
-
-      p {
-        color: black;
-      }
-
-      .icons {
-        filter: invert(0%);
-      }
-    }
-  }
-}
-
-.right-part {
-  @include grid_template(auto 1fr auto / 1fr );
-  height: 96.5vh;
-  row-gap: 1%;
-  padding: 2%;
-
-  header {
-    @include grid_template( 1fr / 1fr auto );
-
-    font-size: $title-font;
-    border-bottom: $thin-border;
-  }
-
-  main {
-    
-    border: $thin-border;
-    padding: 1%;
-    
-    overflow-x: hidden;
-    overflow-y: auto;
-    
-    max-height: 100%;
-  }
-
-  footer { 
-    @include grid_template( 1fr / 1fr );
-
-    .delete-btn {
-      @include grid_template( 1fr / 1fr auto );
-      align-items: center;
-      justify-items: center;
-
-      font-weight: 400;
-      border: $thin-border;
-
-      transition: all linear 0.2s;
-
-      p {
-        font-weight: 400;
-        font-size: $middle-font;
-      }
-    }
-
-    .delete-btn:hover {
-      background-color: rgb(255, 255, 255);
-      transition: all linear 0.25s;
-
-      p {
-        color: black;
-      }
-
-      .icons {
-        filter: invert(0%);
-      }
+  .right-part {
+    main {
     }
   }
 }

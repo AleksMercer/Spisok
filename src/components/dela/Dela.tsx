@@ -9,7 +9,9 @@ function Dela() {
     <div className='dela-app'>
       <div className="filter wrapper">
 
-        <LeftPart picture={require('./media/delaB.webp')} />
+        <LeftPart 
+          picture={require('./media/delaB.webp')} 
+        />
         
         <MiddlePart />
 

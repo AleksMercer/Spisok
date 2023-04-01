@@ -2,7 +2,6 @@
 
 html, body, #root {
 	height: 100%;
-
 	color: white;
 }
 
@@ -11,7 +10,7 @@ html, body, #root {
 .proboval-app, .garderob-app, .dela-app {
 	height: 100%;
   
-  * {
+  * { //font + scroll + btn
     font-family: 'Roboto';
     font-size: $standart-font;
     font-weight: 300;
@@ -28,6 +27,31 @@ html, body, #root {
       border-radius: 2px;
       background-color: #535353;
     }
+
+    button {
+      @include grid_template( auto / 1fr auto );
+      align-items: center;      
+
+      transition: all linear 0.2s;
+
+      p {
+        @include textellipsis();
+      
+      }
+    }
+
+    button:hover {
+      background-color: rgb(255, 255, 255);
+      transition: all linear 0.25s;
+
+      p {
+        color: black;
+      }
+
+      .icons {
+        filter: invert(0%);
+      }
+    }
   }
 
   .filter {
@@ -36,13 +60,9 @@ html, body, #root {
   }
 
   .wrapper {
-    @include grid_template(1fr / 0.35fr 1fr 0.35fr);
+    @include grid_template( 1fr / 0.35fr 1fr 0.35fr );
     column-gap: 1%;
     padding: 1%;
-  }
-
-  .wrapper > .left-part, .right-part, .middle-part {
-    background-color: rgba(0, 0, 0, 0.65);
   }
 
   .icons { //invert all icons like: plus, ?, arrow and etc.

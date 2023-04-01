@@ -33,6 +33,13 @@ $M-sml-text-size: 16px;
 
 /*==========Mixin==========Start*/
 
+@mixin textellipsis() { 
+//@include textellipsis();
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
 @mixin grid_template($template) { 
 //@include grid_template($template);
 // Просто грид сетка
