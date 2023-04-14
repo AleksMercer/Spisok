@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/Spisok/static/css/main.8abca208.css",
-    "main.js": "/Spisok/static/js/main.73dd38fe.js",
+    "main.css": "/Spisok/static/css/main.7e279621.css",
+    "main.js": "/Spisok/static/js/main.d10ab714.js",
     "static/media/garderobH.webp": "/Spisok/static/media/garderobH.1f0241750bad5586a7df.webp",
     "static/media/probovalH.webp": "/Spisok/static/media/probovalH.06692e2b0a7b92f23c61.webp",
     "static/media/spisokH.webp": "/Spisok/static/media/spisokH.d255ef5b5525fa5b25b2.webp",
@@ -13,11 +13,11 @@
     "static/media/SpisokD.webp": "/Spisok/static/media/SpisokD.2e252fc8c5acf7a48244.webp",
     "static/media/delaD.webp": "/Spisok/static/media/delaD.69897a05def5136e442e.webp",
     "index.html": "/Spisok/index.html",
-    "main.8abca208.css.map": "/Spisok/static/css/main.8abca208.css.map",
-    "main.73dd38fe.js.map": "/Spisok/static/js/main.73dd38fe.js.map"
+    "main.7e279621.css.map": "/Spisok/static/css/main.7e279621.css.map",
+    "main.d10ab714.js.map": "/Spisok/static/js/main.d10ab714.js.map"
   },
   "entrypoints": [
-    "static/css/main.8abca208.css",
-    "static/js/main.73dd38fe.js"
+    "static/css/main.7e279621.css",
+    "static/js/main.d10ab714.js"
   ]
 }
