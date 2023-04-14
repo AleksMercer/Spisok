@@ -10,6 +10,12 @@
     }
   
     main { // folders + group 
+      .empty {
+        @include grid_template( 1fr / 1fr );
+        text-align: center;
+        font-size: $middle-font;
+        line-height: $middle-font;
+      }
     }
   }
   
