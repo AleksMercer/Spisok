@@ -1,6 +1,6 @@
 import React from 'react'
 
-function RightPart() {
+function RightPart(): JSX.Element {
   return (
     <div className='right-part'>
 

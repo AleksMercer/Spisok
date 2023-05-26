@@ -1,7 +1,19 @@
 import React from 'react'
+import { openDB } from 'idb'
 import Card from './components/Card'
 
-function Mainpage() {
+( async () => { // init db and stores
+  await openDB("Spisok_DB", 1, {
+    upgrade(db) {
+      const store = db.createObjectStore("Spisok_Store")
+      store.put({}, "Dela")
+      store.put({}, "Proboval")
+      store.put({}, "Garderob")
+    }
+  })
+}) ()
+
+function Mainpage(): JSX.Element {
 
   interface ICard {
     className: string,
@@ -34,7 +46,6 @@ function Mainpage() {
     picture: require('./media/delaH.webp'),
     urlpath: 'Dela'
   }
-
 
   return (
     <div className='mainpage'>

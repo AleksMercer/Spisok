@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Proboval() {
+function Proboval(): JSX.Element {
 
   return (
     <div className='proboval-app'>

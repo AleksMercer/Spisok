@@ -1,6 +1,6 @@
 import React from 'react'
 
-function MiddlePart() {
+function MiddlePart(): JSX.Element {
 
   return (
     <div className='middle-part'>

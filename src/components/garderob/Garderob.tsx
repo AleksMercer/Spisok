@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Garderob() {
+function Garderob(): JSX.Element {
 
   return (
     <div className='garderob-app'>
