@@ -2,14 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { openDB } from 'idb';
 import { getCurrentTime } from '../../commonFunc/timeAndDate';
 
-function GroupsIntoFolder (props: any): JSX.Element {
+function GroupActions (props: any): JSX.Element {
+
+  let folderName = props.folderName // name of folder in which the group
 
   const [groupKeys, setGroupKeys] = useState<string[]>([])
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { getGroups() }, [])
 
-  async function getGroups() { /* get all groups name from folder */
+  async function getGroups () { /* get all groups name from folder */
 
     const db = await openDB("Spisok_DB", 1)
     const tx = db.transaction("Spisok_Store", "readonly")
@@ -17,13 +19,13 @@ function GroupsIntoFolder (props: any): JSX.Element {
   
     try {
       const project = await store.get("Dela")
-      const groupNames = Object.keys(project[props.folderName])
+      const groupNames = Object.keys(project[folderName])
   
       setGroupKeys(groupNames) // set new array into groupKeys (useState)
 
-      console.log('Success get groups')
+      console.log('getGroups Success')
     } catch (error) {
-      console.error('Error:', error)
+      console.error('getGroups Error:', error)
     }
   }
 
@@ -36,14 +38,14 @@ function GroupsIntoFolder (props: any): JSX.Element {
     try {
       const project = await store.get("Dela")
       
-      project[props.folderName][`Group ${getCurrentTime()}`] = {} // create new group
+      project[folderName][`Group ${getCurrentTime()}`] = {} // create new group
    
       await store.put(project, "Dela")
       getGroups()  // render with new group
 
-      console.log('Success add group')
+      console.log('addGroup Success')
     } catch (error) {
-      console.error('Error:', error)
+      console.error('addGroup Error:', error)
     }
   }
 
@@ -71,4 +73,4 @@ function GroupsIntoFolder (props: any): JSX.Element {
   )
 }
 
-export default GroupsIntoFolder
+export default GroupActions

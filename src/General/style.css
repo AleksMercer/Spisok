@@ -252,6 +252,15 @@ html, body, #root {
   -o-text-overflow: ellipsis;
      text-overflow: ellipsis;
 }
+.proboval-app .left-part main .folder__name input, .garderob-app .left-part main .folder__name input, .dela-app .left-part main .folder__name input {
+  overflow: hidden;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  height: 20px;
+}
 .proboval-app .left-part main .folder__name .info-btn img, .garderob-app .left-part main .folder__name .info-btn img, .dela-app .left-part main .folder__name .info-btn img {
   width: 24px;
 }
