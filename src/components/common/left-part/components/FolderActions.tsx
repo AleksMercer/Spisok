@@ -1,13 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { openDB } from 'idb';
 
-import { getCurrentTime } from '../../commonFunc/timeAndDate';
 import GroupActions from './GroupActions';
 import FolderRename from './FolderRename';
 
+import { useAppContext } from '../../../dela/Dela';
+import { getCurrentTime } from '../../commonFunc/timeAndDate';
 
-function FolderActions (props: any): JSX.Element {
 
+function FolderActions (): JSX.Element {
+
+  const { appName } = useAppContext() // context from Dela.tsx with current App - name
+  
   const [folderKeys, setFolderKeys] = useState<string[]>([])
 
   useEffect(() => { getFolders() }, [])
@@ -19,12 +23,11 @@ function FolderActions (props: any): JSX.Element {
     const store = tx.objectStore("Spisok_Store")
   
     try {
-      const project = await store.get("Dela")
+      const project = await store.get(appName)
       const folderNames = Object.keys(project)
   
       setFolderKeys(folderNames) // set new array into folderKeys (useState)
 
-      console.log('getFolders Success')
     } catch (error) {
       console.error('getFolders Error:', error)
     }
@@ -37,14 +40,11 @@ function FolderActions (props: any): JSX.Element {
     const store = tx.objectStore("Spisok_Store")
   
     try {
-      const project = await store.get("Dela")
-  
+      const project = await store.get(appName)
       project[`Folder ${getCurrentTime()}`] = {} // create new folder
-
-      await store.put(project, "Dela")
+      await store.put(project, appName)
       getFolders()  // render with new folder
 
-      console.log('addFolder Success')
     } catch (error) {
       console.error('addFolder Error:', error)
     }
@@ -57,14 +57,11 @@ function FolderActions (props: any): JSX.Element {
     const store = tx.objectStore("Spisok_Store")
   
     try {
-      const project = await store.get("Dela")
-  
+      const project = await store.get(appName)
       delete project[folderName] // delete folder
-
-      await store.put(project, "Dela")
+      await store.put(project, appName)
       getFolders()  // render without folder
 
-      console.log('deleteFolder Success')
     } catch (error) {
       console.error('deleteFolder Error:', error)
     }
@@ -83,15 +80,21 @@ function FolderActions (props: any): JSX.Element {
 
               <div className='folder__name'>
 
-                <FolderRename currentFolder={key} update={getFolders} allFolders={folderKeys} /> {/* name and rename folder */}
+                <FolderRename 
+                  currentFolder={key} 
+                  update={getFolders} 
+                  allFolders={folderKeys} 
+                /> {/* name and rename folder */}
 
-                <button className='info-btn' onClick={() => deleteFolder(key)}>
+                <button className='info-btn' onClick={ () => deleteFolder(key) }>
                   <img className='icons' src={require("./../../icons/delete.png")} alt="x" />
                 </button>
                 
               </div>
 
-              <GroupActions folderName={key} /> {/* add groups */}
+              <GroupActions 
+                folderName={key} 
+              /> {/* add groups */}
 
             </div>
           ))

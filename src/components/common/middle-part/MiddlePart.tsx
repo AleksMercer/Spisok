@@ -1,13 +1,15 @@
-import React from 'react'
+import React from 'react';
 
-function MiddlePart(): JSX.Element {
+function MiddlePart(props: any): JSX.Element {
+
+  const selectedGroup = props.selectedGroup
 
   return (
     <div className='middle-part'>
 
       <header> {/*selected Group name */}
 
-        <span className='group-name'>Group - name - name</span>
+        <span className='group-name'>{selectedGroup === '' ? 'Choose the group' : selectedGroup}</span>
 
         <button className='delete-btn'>
             <img className='icons' src={require("./../icons/delete.png")} alt="?" />

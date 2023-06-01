@@ -1,11 +1,14 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { openDB } from 'idb';
+
+import { useAppContext } from '../../../dela/Dela';
 
 function FolderRename (props: any): JSX.Element { 
 
-  let currentFolder = props.currentFolder
-  let allFolders = props.allFolders
-  let update = props.update // update render ( call getFolders function from FolderActions.tsx)
+  const { appName } = useAppContext() // context from Dela.tsx 
+  const currentFolder = props.currentFolder
+  const allFolders = props.allFolders
+  const update = props.update // update render (call getFolders function from FolderActions.tsx)
 
   const [isEditing, setIsEditing] = useState(false)
   const [text, setText] = useState(currentFolder)
@@ -22,7 +25,6 @@ function FolderRename (props: any): JSX.Element {
 
     return () => document.removeEventListener('mousedown', clickOutside)
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isEditing, text])
 
   const blur = () => { 
@@ -49,14 +51,11 @@ function FolderRename (props: any): JSX.Element {
     const store = tx.objectStore("Spisok_Store")
     
     try {
-      const project = await store.get("Dela")
-
+      const project = await store.get(appName)
       project[newFolderName] = project[currentFolder] //make copy of original object with new name
       delete project[currentFolder]  //delete original object
-      
-      await store.put(project, "Dela")
+      await store.put(project, appName)
 
-      console.log('Success rename')
     } catch (error) {
       console.error('Error:', error)
     }

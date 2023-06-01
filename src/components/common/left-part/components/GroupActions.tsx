@@ -1,14 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { openDB } from 'idb';
+
+import { useAppContext } from '../../../dela/Dela';
 import { getCurrentTime } from '../../commonFunc/timeAndDate';
 
 function GroupActions (props: any): JSX.Element {
 
-  let folderName = props.folderName // name of folder in which the group
-
+  const { appName, setGroupName } = useAppContext() // context from Dela.tsx 
+  const folderName = props.folderName // name of folder in which the group
+  
   const [groupKeys, setGroupKeys] = useState<string[]>([])
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => { getGroups() }, [])
 
   async function getGroups () { /* get all groups name from folder */
@@ -18,12 +20,10 @@ function GroupActions (props: any): JSX.Element {
     const store = tx.objectStore("Spisok_Store")
   
     try {
-      const project = await store.get("Dela")
+      const project = await store.get(appName)
       const groupNames = Object.keys(project[folderName])
-  
       setGroupKeys(groupNames) // set new array into groupKeys (useState)
 
-      console.log('getGroups Success')
     } catch (error) {
       console.error('getGroups Error:', error)
     }
@@ -36,14 +36,11 @@ function GroupActions (props: any): JSX.Element {
     const store = tx.objectStore("Spisok_Store")
   
     try {
-      const project = await store.get("Dela")
-      
+      const project = await store.get(appName)
       project[folderName][`Group ${getCurrentTime()}`] = {} // create new group
-   
-      await store.put(project, "Dela")
+      await store.put(project, appName)
       getGroups()  // render with new group
 
-      console.log('addGroup Success')
     } catch (error) {
       console.error('addGroup Error:', error)
     }
@@ -58,8 +55,8 @@ function GroupActions (props: any): JSX.Element {
       groupKeys.map((key: string): JSX.Element => (
 
         <ul className='folder__group-list' key={key}>
-          <li className='folder__group'>
-            &ensp; <span>{key}</span>
+          <li className='folder__group' onClick={ () => setGroupName(key) }>
+            <span>{key}</span>
           </li> 
         </ul>
 

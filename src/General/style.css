@@ -270,7 +270,12 @@ html, body, #root {
   row-gap: 0.3rem;
 }
 .proboval-app .left-part main .folder__group, .garderob-app .left-part main .folder__group, .dela-app .left-part main .folder__group {
+  margin-left: 5%;
   font-size: 100%;
+  cursor: default;
+}
+.proboval-app .left-part main .folder__group:hover, .garderob-app .left-part main .folder__group:hover, .dela-app .left-part main .folder__group:hover {
+  text-decoration: underline;
 }
 .proboval-app .left-part main .folder__add-group-btn, .garderob-app .left-part main .folder__add-group-btn, .dela-app .left-part main .folder__add-group-btn {
   padding: 0.5%;

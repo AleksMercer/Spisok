@@ -89,7 +89,13 @@
         }
 
         &__group {
+          margin-left: 5%;
           font-size: $standart-font;
+          cursor: default;
+        }
+
+        &__group:hover {
+          text-decoration: underline;
         }
 
         &__add-group-btn {

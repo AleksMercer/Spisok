@@ -1,10 +1,10 @@
-import React from 'react';
+import React  from 'react';
 import FolderActions from './components/FolderActions';
 
 function LeftPart (props: any): JSX.Element {
 
-  let appNamePic = props.picture
-
+  const appNamePic = props.picture
+  
   return (
 
     <div className='left-part'>
