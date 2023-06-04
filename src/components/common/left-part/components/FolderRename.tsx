@@ -5,17 +5,18 @@ import { useAppContext } from '../../../dela/Dela';
 
 function FolderRename (props: any): JSX.Element { 
 
-  const { appName } = useAppContext() // context from Dela.tsx 
-  const currentFolder = props.currentFolder
+  const { appName } = useAppContext()             // context from Dela.tsx 
+
   const allFolders = props.allFolders
-  const update = props.update // update render (call getFolders function from FolderActions.tsx)
+  const currentFolder = props.currentFolder
+  const update = props.update                     // update render (call getFolders function from FolderActions.tsx)
 
   const [isEditing, setIsEditing] = useState(false)
-  const [text, setText] = useState(currentFolder)
+  const [text,      setText     ] = useState(currentFolder)
   
   const inputRef = useRef<HTMLInputElement>(null) // for detected click outside the input
 
-  useEffect(() => {
+  useEffect(() => { /* add or remove listener */
 
     if (isEditing) {
       document.addEventListener('mousedown', clickOutside)
@@ -27,10 +28,10 @@ function FolderRename (props: any): JSX.Element {
 
   }, [isEditing, text])
 
-  const blur = () => { 
+  const blur = () => { /* actions after editing */
     setIsEditing(false) 
 
-    if (text.trim() === ''|| allFolders.includes(text) ) {
+    if (text.trim() === '' || allFolders.includes(text) ) {
       setText(currentFolder)
     } else {
       renameFolder(text)
@@ -38,9 +39,9 @@ function FolderRename (props: any): JSX.Element {
     }
   }
 
-  const clickOutside = () => {
+  const clickOutside = () => { /* actions after click outside */
     if (!inputRef.current) {
-      blur() // here same logic at blur-func, and i just call blur-func
+      blur()  // here same logic at blur-func, and i just call blur-func
     }
   }
   
@@ -52,24 +53,26 @@ function FolderRename (props: any): JSX.Element {
     
     try {
       const project = await store.get(appName)
-      project[newFolderName] = project[currentFolder] //make copy of original object with new name
-      delete project[currentFolder]  //delete original object
+
+      project[newFolderName] = project[currentFolder]  //make copy of original object with new name
+      delete project[currentFolder]                    //delete original object
+
       await store.put(project, appName)
 
     } catch (error) {
-      console.error('Error:', error)
+      console.error('renameFolder() --- error:', error)
     }
   }
 
   return (
     <>
-      {isEditing 
+      { isEditing 
         ? 
         <input
           ref={inputRef}
           type="text"
           value={text}
-          onChange={ (event) => setText(event.target.value) }
+          onChange={ (e) => setText(e.target.value) }
           onBlur={blur}
           maxLength={25}
           autoFocus

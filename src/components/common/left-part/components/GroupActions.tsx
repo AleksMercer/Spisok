@@ -6,12 +6,13 @@ import { getCurrentTime } from '../../commonFunc/timeAndDate';
 
 function GroupActions (props: any): JSX.Element {
 
-  const { appName, setGroupName } = useAppContext() // context from Dela.tsx 
-  const folderName = props.folderName // name of folder in which the group
+  const { appName, setFolderName, setGroupName } = useAppContext() // context from Dela.tsx 
   
-  const [groupKeys, setGroupKeys] = useState<string[]>([])
+  const folderName = props.folderName                              // name of folder in which the group
+  
+  const [groupKeys, setGroupKeys] = useState<string[]>([])         // get all groups name to groupKeys from idb
 
-  useEffect(() => { getGroups() }, [])
+  useEffect(() => { getGroups() }, [])                             // update with all groups
 
   async function getGroups () { /* get all groups name from folder */
 
@@ -22,10 +23,11 @@ function GroupActions (props: any): JSX.Element {
     try {
       const project = await store.get(appName)
       const groupNames = Object.keys(project[folderName])
+
       setGroupKeys(groupNames) // set new array into groupKeys (useState)
 
     } catch (error) {
-      console.error('getGroups Error:', error)
+      console.error('getGroups() --- error:', error)
     }
   }
 
@@ -39,10 +41,11 @@ function GroupActions (props: any): JSX.Element {
       const project = await store.get(appName)
       project[folderName][`Group ${getCurrentTime()}`] = {} // create new group
       await store.put(project, appName)
+
       getGroups()  // render with new group
 
     } catch (error) {
-      console.error('addGroup Error:', error)
+      console.error('addGroup() --- error:', error)
     }
   }
 
@@ -55,9 +58,16 @@ function GroupActions (props: any): JSX.Element {
       groupKeys.map((key: string): JSX.Element => (
 
         <ul className='folder__group-list' key={key}>
-          <li className='folder__group' onClick={ () => setGroupName(key) }>
+
+          <li className='folder__group' onClick={ 
+            () => {
+              setFolderName(folderName) // init current folder to dela.tsx
+              setGroupName(key)         // init current group to dela.tsx
+            }
+          }>
             <span>{key}</span>
           </li> 
+          
         </ul>
 
       ))}

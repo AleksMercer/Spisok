@@ -1,17 +1,4 @@
-import React from 'react'
-import { openDB } from 'idb'
-import Card from './components/Card'
-
-( async () => { // init db and stores
-  await openDB("Spisok_DB", 1, {
-    upgrade(db) {
-      const store = db.createObjectStore("Spisok_Store")
-      store.put({}, "Dela")
-      store.put({}, "Proboval")
-      store.put({}, "Garderob")
-    }
-  })
-}) ()
+import Card from './components/Card';
 
 function Mainpage(): JSX.Element {
 

@@ -10,13 +10,13 @@ import { getCurrentTime } from '../../commonFunc/timeAndDate';
 
 function FolderActions (): JSX.Element {
 
-  const { appName } = useAppContext() // context from Dela.tsx with current App - name
+  const { appName } = useAppContext()                        // context from Dela.tsx with current App - name
   
-  const [folderKeys, setFolderKeys] = useState<string[]>([])
+  const [folderKeys, setFolderKeys] = useState<string[]>([]) // get all folders name to folderKeys from idb
 
-  useEffect(() => { getFolders() }, [])
+  useEffect(() => { getFolders() }, [])                      // update with all folders
 
-  async function getFolders () { /* get all folders name from indexedDB */
+  async function getFolders () { /* get all folders name from idb */
 
     const db = await openDB("Spisok_DB", 1)
     const tx = db.transaction("Spisok_Store", "readonly")
@@ -29,11 +29,11 @@ function FolderActions (): JSX.Element {
       setFolderKeys(folderNames) // set new array into folderKeys (useState)
 
     } catch (error) {
-      console.error('getFolders Error:', error)
+      console.error('getFolders() --- error:', error)
     }
   }
   
-  async function addFolder () {  /* add new folder into indexedDB */
+  async function addFolder () {  /* add new folder into idb */
 
     const db = await openDB("Spisok_DB", 1)
     const tx = db.transaction("Spisok_Store", "readwrite")
@@ -43,10 +43,11 @@ function FolderActions (): JSX.Element {
       const project = await store.get(appName)
       project[`Folder ${getCurrentTime()}`] = {} // create new folder
       await store.put(project, appName)
+      
       getFolders()  // render with new folder
 
     } catch (error) {
-      console.error('addFolder Error:', error)
+      console.error('addFolder() --- error:', error)
     }
   }
 
@@ -63,13 +64,13 @@ function FolderActions (): JSX.Element {
       getFolders()  // render without folder
 
     } catch (error) {
-      console.error('deleteFolder Error:', error)
+      console.error('deleteFolder() --- error:', error)
     }
   }
 
   return (
     <>
-      <main> {/*folder + group + new group btn */}
+      <main> {/*folder + groups + new group btn */}
         { folderKeys.length === 0 
           ? 
           <div className='empty'>You need to add folder <br/>( Use button the bottom )</div> 
@@ -81,9 +82,9 @@ function FolderActions (): JSX.Element {
               <div className='folder__name'>
 
                 <FolderRename 
+                  allFolders={folderKeys} 
                   currentFolder={key} 
                   update={getFolders} 
-                  allFolders={folderKeys} 
                 /> {/* name and rename folder */}
 
                 <button className='info-btn' onClick={ () => deleteFolder(key) }>

@@ -1,4 +1,4 @@
-import { useState, useContext, createContext } from 'react';
+import { useState,useEffect, useContext, createContext } from 'react';
 
 import LeftPart from '../common/left-part/LeftPart';
 import MiddlePart from '../common/middle-part/MiddlePart';
@@ -9,21 +9,29 @@ export const useAppContext = () => useContext(AppContext)
 
 function Dela(): JSX.Element {
   
-  const [groupName, setGroupName] = useState('') // used to pass group name from GroupActions.tsx
+  const [folderName,  setFolderName ] = useState<string>('')
+  const [groupName,   setGroupName  ] = useState<string>('')
+  const [elementName, setElementName] = useState<string>('')
 
   return (
     <div className='dela-app'>
       <div className="filter wrapper">
 
-        <AppContext.Provider value={ {appName: "Dela", setGroupName} }>
+        <AppContext.Provider value={{
+          appName: "Dela", 
+          folderName,
+          setFolderName,
+          groupName, 
+          setGroupName,
+          elementName, 
+          setElementName
+        }}>
 
           <LeftPart 
             picture={require('./media/delaB.webp')}
           />
           
-          <MiddlePart 
-            selectedGroup={groupName}
-          />
+          <MiddlePart />
 
           <RightPart />
 

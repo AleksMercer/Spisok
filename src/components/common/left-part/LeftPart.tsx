@@ -1,4 +1,3 @@
-import React  from 'react';
 import FolderActions from './components/FolderActions';
 
 function LeftPart (props: any): JSX.Element {
