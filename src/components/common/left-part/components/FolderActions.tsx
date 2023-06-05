@@ -9,12 +9,12 @@ import { getCurrentTime } from '../../commonFunc/timeAndDate';
 
 
 function FolderActions (): JSX.Element {
-
-  const { appName } = useAppContext()                        // context from Dela.tsx with current App - name
+ 
+  const { appName } = useAppContext()                           // context from Dela.tsx with current App - name
   
-  const [folderKeys, setFolderKeys] = useState<string[]>([]) // get all folders name to folderKeys from idb
+  const [folderKeys, setFolderKeys] = useState<string[]>([])    // get all folders name to folderKeys from idb
 
-  useEffect(() => { getFolders() }, [])                      // update with all folders
+  useEffect(() => { getFolders() }, [])                         // init app with all folders
 
   async function getFolders () { /* get all folders name from idb */
 
@@ -24,7 +24,7 @@ function FolderActions (): JSX.Element {
   
     try {
       const project = await store.get(appName)
-      const folderNames = Object.keys(project)
+      const folderNames = Object.keys(project).reverse()  // reverse so that new folders are added on top
   
       setFolderKeys(folderNames) // set new array into folderKeys (useState)
 
@@ -44,7 +44,7 @@ function FolderActions (): JSX.Element {
       project[`Folder ${getCurrentTime()}`] = {} // create new folder
       await store.put(project, appName)
       
-      getFolders()  // render with new folder
+      getFolders() // render with new folder
 
     } catch (error) {
       console.error('addFolder() --- error:', error)
@@ -61,7 +61,8 @@ function FolderActions (): JSX.Element {
       const project = await store.get(appName)
       delete project[folderName] // delete folder
       await store.put(project, appName)
-      getFolders()  // render without folder
+
+      getFolders() // render without folder
 
     } catch (error) {
       console.error('deleteFolder() --- error:', error)

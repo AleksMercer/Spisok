@@ -6,13 +6,18 @@ import { getCurrentTime } from '../../commonFunc/timeAndDate';
 
 function GroupActions (props: any): JSX.Element {
 
-  const { appName, setFolderName, setGroupName } = useAppContext() // context from Dela.tsx 
+  const { // context from Dela.tsx 
+    appName, 
+    groupsUpdate, 
+    setFolderName, 
+    setGroupName 
+  } = useAppContext() 
   
-  const folderName = props.folderName                              // name of folder in which the group
+  const folderName = props.folderName                       // name of folder in which the group
   
-  const [groupKeys, setGroupKeys] = useState<string[]>([])         // get all groups name to groupKeys from idb
+  const [groupKeys, setGroupKeys] = useState<string[]>([])  // get all groups name to groupKeys from idb
 
-  useEffect(() => { getGroups() }, [])                             // update with all groups
+  useEffect(() => { getGroups() }, [groupsUpdate])          // update with all groups & and call when delete or rename group
 
   async function getGroups () { /* get all groups name from folder */
 

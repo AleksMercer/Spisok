@@ -6,12 +6,15 @@ import { getCurrentDate, getCurrentTime } from '../../commonFunc/timeAndDate';
 
 function ElementActions (): JSX.Element { 
 
-  const { appName, folderName, groupName, elementName, setElementName } = useAppContext()      // context from Dela.tsx with current App - name
+  const { // context from Dela.tsx with current App - name
+    appName, 
+    folderName, 
+    groupName 
+  } = useAppContext()         
 
-  const [elementsKeys, setElementsKeys] = useState<(any)[][]>([]);                              // get all elements name to elementsKeys from idb
+  const [elementsKeys, setElementsKeys] = useState<(any)[][]>([]);   // get all elements name to elementsKeys from idb
   
   useEffect(() => { getElements() }, [groupName])
-  useEffect(() => { checkElement() }, [elementName])  // if use the check button, elementName change to current element and call checkElement for change check status
   
   async function getElements () { /* get all Elements name from indexedDB */
 
@@ -41,13 +44,12 @@ function ElementActions (): JSX.Element {
   
     try {
       const project = await store.get(appName)
-
       project[folderName][groupName][`Elements ${getCurrentDate()} ${getCurrentTime()}`] = {
         info: "",
         checked: false
       }
-
       await store.put(project, appName)
+      
       getElements()  // render with new elements
 
     } catch (error) {
@@ -55,9 +57,7 @@ function ElementActions (): JSX.Element {
     }
   }
 
-  async function checkElement () {  /* strikes out & return name of element */
-
-    if (elementName === '') return
+  async function checkElement (key: string) {  /* strikes out & return name of element */
 
     const db = await openDB("Spisok_DB", 1)
     const tx = db.transaction("Spisok_Store", "readwrite")
@@ -66,7 +66,7 @@ function ElementActions (): JSX.Element {
     try {
       const project = await store.get(appName)
       
-      const element = project[folderName][groupName][elementName]
+      const element = project[folderName][groupName][key]
       element.checked = !element.checked // if was true, became false...
 
       await store.put(project, appName)
@@ -80,7 +80,7 @@ function ElementActions (): JSX.Element {
   return (
     <>
       <main>
-        { elementsKeys.length === 0
+        { elementsKeys.length === 0 || groupName === ''
           ?
           <></>
           :
@@ -94,9 +94,7 @@ function ElementActions (): JSX.Element {
                 <span className='list-element__text'>{key}</span>
               }
 
-              <button className='list-element__check-btn' onClick={ () => {
-                setElementName(key)
-              }}>
+              <button className='list-element__check-btn' onClick={ () => {checkElement(key)} }>
                 <img className='icons' src={require("./../../icons/done.png")} alt="?" />
               </button>
         

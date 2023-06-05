@@ -5,11 +5,11 @@ import { useAppContext } from '../../../dela/Dela';
 
 function FolderRename (props: any): JSX.Element { 
 
-  const { appName } = useAppContext()             // context from Dela.tsx 
+  const { appName } = useAppContext()          // context from Dela.tsx 
 
-  const allFolders = props.allFolders
+  const allFolders    = props.allFolders
   const currentFolder = props.currentFolder
-  const update = props.update                     // update render (call getFolders function from FolderActions.tsx)
+  const update        = props.update           // update render (call getFolders function from FolderActions.tsx)
 
   const [isEditing, setIsEditing] = useState(false)
   const [text,      setText     ] = useState(currentFolder)
