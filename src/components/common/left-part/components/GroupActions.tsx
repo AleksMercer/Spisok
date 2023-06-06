@@ -8,7 +8,8 @@ function GroupActions (props: any): JSX.Element {
 
   const { // context from Dela.tsx 
     appName, 
-    groupsUpdate, 
+    groupsUpdate,
+    setAllGroupsAtFolder, 
     setFolderName, 
     setGroupName 
   } = useAppContext() 
@@ -65,9 +66,10 @@ function GroupActions (props: any): JSX.Element {
         <ul className='folder__group-list' key={key}>
 
           <li className='folder__group' onClick={ 
-            () => {
-              setFolderName(folderName) // init current folder to dela.tsx
-              setGroupName(key)         // init current group to dela.tsx
+            () => { // init things to dela.tsx
+              setFolderName(folderName) 
+              setGroupName(key)
+              setAllGroupsAtFolder(groupKeys)
             }
           }>
             <span>{key}</span>

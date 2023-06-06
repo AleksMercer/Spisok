@@ -194,7 +194,7 @@ html, body, #root {
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: end;
-  font-size: 200%;
+  font-size: 175%;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
 }
 .proboval-app .left-part main, .proboval-app .middle-part main, .proboval-app .right-part main, .garderob-app .left-part main, .garderob-app .middle-part main, .garderob-app .right-part main, .dela-app .left-part main, .dela-app .middle-part main, .dela-app .right-part main {
@@ -257,9 +257,9 @@ html, body, #root {
   white-space: nowrap;
   -o-text-overflow: ellipsis;
      text-overflow: ellipsis;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(255, 255, 255, 0);
   color: white;
-  height: 20px;
+  height: 80%;
 }
 .proboval-app .left-part main .folder__name .info-btn img, .garderob-app .left-part main .folder__name .info-btn img, .dela-app .left-part main .folder__name .info-btn img {
   width: 24px;
@@ -296,6 +296,17 @@ html, body, #root {
   white-space: nowrap;
   -o-text-overflow: ellipsis;
      text-overflow: ellipsis;
+  height: 70%;
+}
+.proboval-app .middle-part header input, .garderob-app .middle-part header input, .dela-app .middle-part header input {
+  overflow: hidden;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  background-color: rgba(255, 255, 255, 0);
+  color: white;
+  margin-bottom: 0.3%;
+  height: 70%;
 }
 .proboval-app .middle-part main, .garderob-app .middle-part main, .dela-app .middle-part main {
   padding: 1.4%;
@@ -311,6 +322,17 @@ html, body, #root {
   white-space: nowrap;
   -o-text-overflow: ellipsis;
      text-overflow: ellipsis;
+  height: 70%;
+}
+.proboval-app .right-part header input, .garderob-app .right-part header input, .dela-app .right-part header input {
+  overflow: hidden;
+  white-space: nowrap;
+  -o-text-overflow: ellipsis;
+     text-overflow: ellipsis;
+  background-color: rgba(255, 255, 255, 0);
+  color: white;
+  margin-bottom: 0.2%;
+  height: 70%;
 }
 .proboval-app .right-part main, .garderob-app .right-part main, .dela-app .right-part main {
   padding: 4%;

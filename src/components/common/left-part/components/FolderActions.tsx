@@ -10,7 +10,7 @@ import { getCurrentTime } from '../../commonFunc/timeAndDate';
 
 function FolderActions (): JSX.Element {
  
-  const { appName } = useAppContext()                           // context from Dela.tsx with current App - name
+  const { appName, folderName, setFolderName, setGroupName } = useAppContext()                           // context from Dela.tsx with current App - name
   
   const [folderKeys, setFolderKeys] = useState<string[]>([])    // get all folders name to folderKeys from idb
 
@@ -51,7 +51,12 @@ function FolderActions (): JSX.Element {
     }
   }
 
-  async function deleteFolder (folderName: string) {  /* delete folder from indexedDB */
+  async function deleteFolder (folder: string) {  /* delete folder from indexedDB */
+
+    if (folder === folderName) {
+      setFolderName('')
+      setGroupName('')
+    }
 
     const db = await openDB("Spisok_DB", 1)
     const tx = db.transaction("Spisok_Store", "readwrite")
@@ -59,7 +64,7 @@ function FolderActions (): JSX.Element {
   
     try {
       const project = await store.get(appName)
-      delete project[folderName] // delete folder
+      delete project[folder] // delete folder
       await store.put(project, appName)
 
       getFolders() // render without folder

@@ -5,11 +5,11 @@ import { useAppContext } from '../../../dela/Dela';
 
 function FolderRename (props: any): JSX.Element { 
 
-  const { appName } = useAppContext()          // context from Dela.tsx 
+  const { appName, folderName, setFolderName } = useAppContext()  // context from Dela.tsx 
 
   const allFolders    = props.allFolders
   const currentFolder = props.currentFolder
-  const update        = props.update           // update render (call getFolders function from FolderActions.tsx)
+  const update        = props.update        // update render (call getFolders function from FolderActions.tsx)
 
   const [isEditing, setIsEditing] = useState(false)
   const [text,      setText     ] = useState(currentFolder)
@@ -29,14 +29,20 @@ function FolderRename (props: any): JSX.Element {
   }, [isEditing, text])
 
   const blur = () => { /* actions after editing */
+
     setIsEditing(false) 
 
-    if (text.trim() === '' || allFolders.includes(text) ) {
+    if (text.trim() === '' || allFolders.includes(text)) {
       setText(currentFolder)
-    } else {
-      renameFolder(text)
-      update()
+      return
+    } 
+
+    if (currentFolder === folderName) { //if u editing name of opened folder, init new folder name for group
+      setFolderName(text)
     }
+
+    renameFolder(text)
+    update()
   }
 
   const clickOutside = () => { /* actions after click outside */
@@ -76,9 +82,10 @@ function FolderRename (props: any): JSX.Element {
           onBlur={blur}
           maxLength={25}
           autoFocus
+          formNoValidate
         />
        : 
-        <span onDoubleClick={ () => setIsEditing(true) }>{text}</span> // if use doubleClick to span start edit
+        <span onClick={ () => setIsEditing(true) }>{text}</span> // if use doubleClick to span start edit
       }
     </>
   )

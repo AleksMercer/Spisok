@@ -38,6 +38,8 @@ function ElementActions (): JSX.Element {
 
   async function addElement () {  /* add new folder into indexedDB */
 
+    if (folderName === '' || groupName === '') return
+
     const db = await openDB("Spisok_DB", 1)
     const tx = db.transaction("Spisok_Store", "readwrite")
     const store = tx.objectStore("Spisok_Store")

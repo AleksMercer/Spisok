@@ -11,8 +11,11 @@ function Dela(): JSX.Element {
   
   const appName = "Dela"
 
-  const [groupsUpdate,    setgroupsUpdate   ] = useState<boolean>(true)
-  const [elementsUpdate,  setElementsUpdate ] = useState<boolean>(true)
+  const [groupsUpdate,    setgroupsUpdate   ] = useState<boolean>(true) //use for update list groups at left part into folder
+  const [elementsUpdate,  setElementsUpdate ] = useState<boolean>(true) //use for update list elements at middle part into group
+
+  const [allGroupsAtFolder,  setAllGroupsAtFolder ] = useState<string[]>([]) //use at GroupRename.tsx, init from groupActions
+  const [allElementsAtGroup, setAllElementsAtGroup] = useState<string[]>([]) 
 
   const [folderName,  setFolderName ] = useState<string>('') // init from groupAction.tsx
   const [groupName,   setGroupName  ] = useState<string>('') // init from groupAction.tsx
@@ -27,6 +30,9 @@ function Dela(): JSX.Element {
 
           groupsUpdate,    setgroupsUpdate,
           elementsUpdate,  setElementsUpdate,
+
+          allGroupsAtFolder, setAllGroupsAtFolder,
+          allElementsAtGroup, setAllElementsAtGroup,
 
           folderName,  setFolderName,
           groupName,   setGroupName,
