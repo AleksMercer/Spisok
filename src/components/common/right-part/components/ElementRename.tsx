@@ -1,17 +1,17 @@
 import { useState, useEffect, useRef } from 'react';
 import { openDB } from 'idb';
 
-import GroupDelete from './GroupDelete';
 import { useAppContext } from '../../../dela/Dela';
 
-function GroupRename (): JSX.Element { 
+function ElementRename (): JSX.Element {
 
-  const { // context from Dela.tsx with current App - name
+  const { // context from Dela.tsx 
     appName, 
-    groupsUpdate, setGroupsUpdate,
-    allGroupsAtFolder, 
-    folderName,
-    groupName, setGroupName 
+    elementsUpdate, setElementsUpdate,
+    allElementsAtGroup, 
+    folderName, 
+    groupName,
+    elementName, setElementName 
   } = useAppContext() 
 
   const [isEditing, setIsEditing] =  useState<boolean>(false)
@@ -19,7 +19,7 @@ function GroupRename (): JSX.Element {
 
   const inputRef = useRef<HTMLInputElement>(null) // for detected click outside the input
   
-  useEffect(() => { setText(groupName) }, [groupName])
+  useEffect(() => { setText(elementName) }, [elementName])
 
   useEffect(() => { /* add or remove listener */
 
@@ -36,14 +36,14 @@ function GroupRename (): JSX.Element {
   const blur = () => { /* actions after editing */
     setIsEditing(false) 
 
-    if (text.trim() === '' || allGroupsAtFolder.includes(text) || groupName === text ) {
-      setText(groupName)
+    if (text.trim() === '' || allElementsAtGroup.includes(text) || elementName === text ) {
+      setText(elementName)
       return
     } 
     
-    renameGroup(text)
-    setGroupName(text)
-    setGroupsUpdate(!groupsUpdate)
+    renameElement(text)
+    setElementName(text)
+    setElementsUpdate(!elementsUpdate)
   }
 
   const clickOutside = () => { /* actions after click outside */
@@ -52,7 +52,7 @@ function GroupRename (): JSX.Element {
     }
   }
 
-  async function renameGroup(newGroupName: string) { /* rename folder into indexedDB */
+  async function renameElement(newElementName: string) { /* rename folder into indexedDB */
 
     const db = await openDB("Spisok_DB", 1)
     const tx = db.transaction("Spisok_Store", "readwrite")
@@ -60,23 +60,22 @@ function GroupRename (): JSX.Element {
     
     try {
       const project = await store.get(appName)
-
-      project[folderName][newGroupName] = project[folderName][groupName] //make copy of original group-object with new name
-      delete project[folderName][groupName]                              //delete original group-object
+      project[folderName][groupName][newElementName] = project[folderName][groupName][elementName] //make copy of original list-object with new name
+      delete project[folderName][groupName][elementName]                                           //delete original element-object
 
       await store.put(project, appName)
 
     } catch (error) {
-      console.error('renameGroup() --- error:', error)
+      console.error('renameElement() --- error:', error)
     }
   }
 
   return (
-    <header> {/*selected Group name */}
+    <header>{/*element name */}
       { isEditing 
         ? 
         <input
-          name='group'
+          name='element'
           ref={inputRef}
           type="text"
           value={text}
@@ -86,15 +85,12 @@ function GroupRename (): JSX.Element {
           autoFocus
         />
        : 
-        <span className='group-name' onClick={ () => setIsEditing(true) }> 
+        <span className='element-name'onClick={ () => setIsEditing(true) }>
           {text === '' ? '' : text}
         </span>
       }
-
-      <GroupDelete />
-
     </header>
   )
 }
 
-export default GroupRename
+export default ElementRename

@@ -10,7 +10,12 @@ import { getCurrentTime } from '../../commonFunc/timeAndDate';
 
 function FolderActions (): JSX.Element {
  
-  const { appName, folderName, setFolderName, setGroupName } = useAppContext()                           // context from Dela.tsx with current App - name
+  const { appName, 
+    folderName, 
+    setFolderName, 
+    setGroupName, 
+    setElementName 
+  } = useAppContext() // context from Dela.tsx with current App - name
   
   const [folderKeys, setFolderKeys] = useState<string[]>([])    // get all folders name to folderKeys from idb
 
@@ -56,6 +61,7 @@ function FolderActions (): JSX.Element {
     if (folder === folderName) {
       setFolderName('')
       setGroupName('')
+      setElementName('')
     }
 
     const db = await openDB("Spisok_DB", 1)

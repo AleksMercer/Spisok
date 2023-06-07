@@ -135,6 +135,9 @@
 
     main {
       padding: 1.4%;
+      span {
+        cursor: default;
+      }
     }
   }
 
@@ -153,13 +156,33 @@
         @include textellipsis();
         background-color: rgba(255, 255, 255, 0);
         color: white;
-        margin-bottom: 0.2%;
+        margin-bottom: 0.7%;
         height: 70%;
       }
     }
 
     main {
-      padding: 4%;
+      padding: 2%;
+      align-content: stretch;
+
+      textarea, .element-content {
+        color: white;
+        padding: 1%;
+      }
+
+      textarea {
+        background-color: rgba(255, 255, 255, 0.2);
+        resize: none;
+        max-height: 100%;     
+      }
+
+      .element-content {        
+        background-color: rgba(255, 255, 255, 0.05);
+        word-break: break-word;
+        white-space: break-spaces;
+        min-height: 26px;
+        line-height: 119%;
+      }
     }
   }
 }

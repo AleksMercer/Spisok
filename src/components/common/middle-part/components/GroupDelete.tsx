@@ -4,11 +4,12 @@ import { useAppContext } from '../../../dela/Dela';
 
 function GroupDelete (): JSX.Element { 
 
-  const { // context from Dela.tsx with current App - name
+  const { // context from Dela.tsx
     appName, 
-    groupsUpdate, setgroupsUpdate, 
+    groupsUpdate, setGroupsUpdate, 
     folderName, setFolderName,
-    groupName, setGroupName 
+    groupName, setGroupName, 
+    setElementName
   } = useAppContext() 
 
   async function deleteGroup () {  /* delete group from indexedDB */
@@ -22,10 +23,13 @@ function GroupDelete (): JSX.Element {
     try {
       const project = await store.get(appName)
       delete project[folderName][groupName] // delete group
+
       await store.put(project, appName)
 
       setFolderName('')
       setGroupName('')
+      setElementName('')
+      setGroupsUpdate(!groupsUpdate) // from dela.tsx, useContext for call getGroups func from GroupActions.tsx for update groups-list
 
     } catch (error) {
       console.error('deleteGroup() --- error:', error)
@@ -35,7 +39,6 @@ function GroupDelete (): JSX.Element {
   return (
     <button className='delete-btn' onClick={() => {
       deleteGroup()
-      setgroupsUpdate(!groupsUpdate) // from dela.tsx, useContext for call getGroups func from GroupActions.tsx for upfate groups-list
     }}>
 
       <img className='icons' src={require("./../../icons/delete.png")} alt="?" />

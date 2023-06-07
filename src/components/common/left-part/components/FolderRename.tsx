@@ -75,6 +75,7 @@ function FolderRename (props: any): JSX.Element {
       { isEditing 
         ? 
         <input
+          name='folder'
           ref={inputRef}
           type="text"
           value={text}
@@ -82,7 +83,6 @@ function FolderRename (props: any): JSX.Element {
           onBlur={blur}
           maxLength={25}
           autoFocus
-          formNoValidate
         />
        : 
         <span onClick={ () => setIsEditing(true) }>{text}</span> // if use doubleClick to span start edit

@@ -1,4 +1,4 @@
-import { useState, useContext, createContext } from 'react';
+import { useState, useEffect, useContext, createContext } from 'react';
 
 import LeftPart from '../common/left-part/LeftPart';
 import MiddlePart from '../common/middle-part/MiddlePart';
@@ -11,7 +11,7 @@ function Dela(): JSX.Element {
   
   const appName = "Dela"
 
-  const [groupsUpdate,    setgroupsUpdate   ] = useState<boolean>(true) //use for update list groups at left part into folder
+  const [groupsUpdate,    setGroupsUpdate   ] = useState<boolean>(true) //use for update list groups at left part into folder
   const [elementsUpdate,  setElementsUpdate ] = useState<boolean>(true) //use for update list elements at middle part into group
 
   const [allGroupsAtFolder,  setAllGroupsAtFolder ] = useState<string[]>([]) //use at GroupRename.tsx, init from groupActions
@@ -21,6 +21,8 @@ function Dela(): JSX.Element {
   const [groupName,   setGroupName  ] = useState<string>('') // init from groupAction.tsx
   const [elementName, setElementName] = useState<string>('')
 
+ // useEffect(() => { console.log('1-', elementName, '2-', allElementsAtGroup) }, [elementName,allElementsAtGroup])
+
   return (
     <div className='dela-app'>
       <div className="filter wrapper">
@@ -28,7 +30,7 @@ function Dela(): JSX.Element {
         <AppContext.Provider value={{
           appName,
 
-          groupsUpdate,    setgroupsUpdate,
+          groupsUpdate,    setGroupsUpdate,
           elementsUpdate,  setElementsUpdate,
 
           allGroupsAtFolder, setAllGroupsAtFolder,

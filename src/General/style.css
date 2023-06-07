@@ -311,6 +311,9 @@ html, body, #root {
 .proboval-app .middle-part main, .garderob-app .middle-part main, .dela-app .middle-part main {
   padding: 1.4%;
 }
+.proboval-app .middle-part main span, .garderob-app .middle-part main span, .dela-app .middle-part main span {
+  cursor: default;
+}
 .proboval-app .right-part, .garderob-app .right-part, .dela-app .right-part {
   padding: 2%;
 }
@@ -331,11 +334,29 @@ html, body, #root {
      text-overflow: ellipsis;
   background-color: rgba(255, 255, 255, 0);
   color: white;
-  margin-bottom: 0.2%;
+  margin-bottom: 0.7%;
   height: 70%;
 }
 .proboval-app .right-part main, .garderob-app .right-part main, .dela-app .right-part main {
-  padding: 4%;
+  padding: 2%;
+  -ms-flex-line-pack: stretch;
+      align-content: stretch;
+}
+.proboval-app .right-part main textarea, .proboval-app .right-part main .element-content, .garderob-app .right-part main textarea, .garderob-app .right-part main .element-content, .dela-app .right-part main textarea, .dela-app .right-part main .element-content {
+  color: white;
+  padding: 1%;
+}
+.proboval-app .right-part main textarea, .garderob-app .right-part main textarea, .dela-app .right-part main textarea {
+  background-color: rgba(255, 255, 255, 0.2);
+  resize: none;
+  max-height: 100%;
+}
+.proboval-app .right-part main .element-content, .garderob-app .right-part main .element-content, .dela-app .right-part main .element-content {
+  background-color: rgba(255, 255, 255, 0.05);
+  word-break: break-word;
+  white-space: break-spaces;
+  min-height: 26px;
+  line-height: 119%;
 }
 
 /* ------------------- */
