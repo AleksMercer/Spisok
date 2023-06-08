@@ -9,10 +9,10 @@ function FolderRename (props: any): JSX.Element {
 
   const allFolders    = props.allFolders
   const currentFolder = props.currentFolder
-  const update        = props.update        // update render (call getFolders function from FolderActions.tsx)
+  const update        = props.update  // update render (call getFolders function from FolderActions.tsx)
 
-  const [isEditing, setIsEditing] = useState(false)
-  const [text,      setText     ] = useState(currentFolder)
+  const [isEditing, setIsEditing] = useState<boolean>(false)
+  const [text,      setText     ] = useState<string>(currentFolder)
   
   const inputRef = useRef<HTMLInputElement>(null) // for detected click outside the input
 

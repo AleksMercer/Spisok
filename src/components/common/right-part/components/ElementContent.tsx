@@ -103,6 +103,7 @@ function ElementContent (): JSX.Element {
           onChange={ (e) => setContent(e.target.value) }
           onBlur={blur}
           onFocus={handleFocus}
+          maxLength={2000}
           autoFocus
         />
        : 

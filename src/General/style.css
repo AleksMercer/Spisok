@@ -176,6 +176,14 @@ html, body, #root {
           column-gap: 1%;
   padding: 1%;
 }
+.proboval-app .wrapper .in-developing, .garderob-app .wrapper .in-developing, .dela-app .wrapper .in-developing {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
 .proboval-app .icons, .garderob-app .icons, .dela-app .icons {
   -webkit-filter: invert(100%);
           filter: invert(100%);
@@ -183,7 +191,7 @@ html, body, #root {
 
 .proboval-app .left-part, .proboval-app .middle-part, .proboval-app .right-part, .garderob-app .left-part, .garderob-app .middle-part, .garderob-app .right-part, .dela-app .left-part, .dela-app .middle-part, .dela-app .right-part {
   display: grid;
-  grid-template: auto 1fr auto/1fr;
+  grid-template: auto 1fr auto/minmax(175px, 1fr);
   height: 96.5vh;
   row-gap: 1%;
   background-color: rgba(0, 0, 0, 0.75);
@@ -222,6 +230,51 @@ html, body, #root {
 }
 .proboval-app .left-part, .garderob-app .left-part, .dela-app .left-part {
   padding: 2%;
+}
+.proboval-app .left-part header .information, .garderob-app .left-part header .information, .dela-app .left-part header .information {
+  display: grid;
+  grid-template: 1fr auto/1fr;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  z-index: 1;
+  padding: 1%;
+  width: 90%;
+  height: 90%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(0, 0, 0, 0.75);
+}
+.proboval-app .left-part header .information__close, .garderob-app .left-part header .information__close, .dela-app .left-part header .information__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.proboval-app .left-part header .information__text, .garderob-app .left-part header .information__text, .dela-app .left-part header .information__text {
+  display: grid;
+  grid-template: repeat(10, 1fr)/1fr;
+  -ms-flex-line-pack: justify;
+      align-content: space-between;
+  text-align: justify;
+  overflow: hidden;
+}
+.proboval-app .left-part header .information__text .info-sub-title, .garderob-app .left-part header .information__text .info-sub-title, .dela-app .left-part header .information__text .info-sub-title {
+  font-size: 2rem;
+  text-align: center;
+}
+.proboval-app .left-part header .information__text .info-text, .garderob-app .left-part header .information__text .info-text, .dela-app .left-part header .information__text .info-text {
+  font-size: 1.25rem;
+  line-height: 30px;
+}
+.proboval-app .left-part header .information__deleteAll-btn, .garderob-app .left-part header .information__deleteAll-btn, .dela-app .left-part header .information__deleteAll-btn {
+  padding: 1%;
+  font-size: 2rem;
+  background-color: rgba(30, 225, 255, 0.5);
+}
+.proboval-app .left-part header .information__deleteAll-btn:hover, .garderob-app .left-part header .information__deleteAll-btn:hover, .dela-app .left-part header .information__deleteAll-btn:hover {
+  background-color: rgba(255, 0, 0, 0.5);
 }
 .proboval-app .left-part main, .garderob-app .left-part main, .dela-app .left-part main {
   padding: 4%;
@@ -347,12 +400,11 @@ html, body, #root {
   padding: 1%;
 }
 .proboval-app .right-part main textarea, .garderob-app .right-part main textarea, .dela-app .right-part main textarea {
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(255, 255, 255, 0.05);
   resize: none;
   max-height: 100%;
 }
 .proboval-app .right-part main .element-content, .garderob-app .right-part main .element-content, .dela-app .right-part main .element-content {
-  background-color: rgba(255, 255, 255, 0.05);
   word-break: break-word;
   white-space: break-spaces;
   min-height: 26px;
@@ -573,7 +625,7 @@ html, body, #root {
   background-color: #1a1a1a;
 }
 .dela-app .left-part header > .app-name {
-  max-width: 25%;
+  height: 48px;
 }
 .dela-app .left-part main .empty {
   display: grid;
@@ -602,11 +654,11 @@ html, body, #root {
 .garderob-app {
   background: url("/src/components/garderob/media/garderobD.webp");
   background-size: 6%;
-  background-color: #1a1a1a;
+  background-color: #000000;
 }
 
 .proboval-app {
   background: url("/src/components/proboval/media/probovalD.webp");
   background-size: 6%;
-  background-color: #1a1a1a;
+  background-color: #000000;
 }

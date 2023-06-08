@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, createContext } from 'react';
+import { useState, useContext, createContext } from 'react';
 
 import LeftPart from '../common/left-part/LeftPart';
 import MiddlePart from '../common/middle-part/MiddlePart';
@@ -7,7 +7,7 @@ import RightPart from '../common/right-part/RightPart';
 const AppContext = createContext<any>({})
 export const useAppContext = () => useContext(AppContext)
 
-function Dela(): JSX.Element {
+function Dela (): JSX.Element {
   
   const appName = "Dela"
 
@@ -20,8 +20,6 @@ function Dela(): JSX.Element {
   const [folderName,  setFolderName ] = useState<string>('') // init from groupAction.tsx
   const [groupName,   setGroupName  ] = useState<string>('') // init from groupAction.tsx
   const [elementName, setElementName] = useState<string>('')
-
- // useEffect(() => { console.log('1-', elementName, '2-', allElementsAtGroup) }, [elementName,allElementsAtGroup])
 
   return (
     <div className='dela-app'>

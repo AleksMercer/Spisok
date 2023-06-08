@@ -1,11 +1,9 @@
-function Proboval(): JSX.Element {
+function Proboval (): JSX.Element {
 
   return (
     <div className='proboval-app'>
       <div className="filter wrapper">
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
+          <img className="in-developing" src={require('./media/inDeveloping.webp')} alt="" />
       </div>
     </div>
   )

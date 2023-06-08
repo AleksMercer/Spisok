@@ -17,9 +17,9 @@ function FolderActions (): JSX.Element {
     setElementName 
   } = useAppContext() // context from Dela.tsx with current App - name
   
-  const [folderKeys, setFolderKeys] = useState<string[]>([])    // get all folders name to folderKeys from idb
+  const [folderKeys, setFolderKeys] = useState<string[]>([])  // get all folders name to folderKeys from idb
 
-  useEffect(() => { getFolders() }, [])                         // init app with all folders
+  useEffect(() => { getFolders() }, [])  // init app with all folders
 
   async function getFolders () { /* get all folders name from idb */
 

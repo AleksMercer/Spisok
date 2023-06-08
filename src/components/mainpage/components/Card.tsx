@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-function Card(props: any) {
+function Card (props: any): JSX.Element {
 
   return (
     <div className={props.className}>

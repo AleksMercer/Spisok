@@ -1,6 +1,6 @@
 import Card from './components/Card';
 
-function Mainpage(): JSX.Element {
+function Mainpage (): JSX.Element {
 
   interface ICard {
     className: string,
@@ -28,8 +28,8 @@ function Mainpage(): JSX.Element {
 
   const dela: ICard = {
     className: 'dela-card',
-    descriptionEN: 'This is the "Dela" app. This app is a classic to-do list. The app provides features such as: making lists, marking lists, sorting lists into folders, and making notes in lists.',
-    descriptionRU: 'Это приложение "Dela". Данное приложение представляет собой классический список дел. Приложение предоставляет такие возможности, как: составление списков, маркировка списков, сортировка списков по папкам и создание заметок в списках.',
+    descriptionEN: 'This is the "Dela" app. This app is a classic to-do list. The app provides features such as: create folders, add groups to them, add elements to groups, and fill these elements with text information.',
+    descriptionRU: 'Это приложение "Dela". Данное приложение представляет собой классический список дел. Приложение предоставляет такие возможности, как: создание папок, добавления в них групп, добавления в группы элементов и заполнение этих элементов текстовой информацией.',
     picture: require('./media/delaH.webp'),
     urlpath: 'Dela'
   }

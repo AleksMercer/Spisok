@@ -1,4 +1,4 @@
-export function getCurrentTime() {
+export function getCurrentTime () :string {
 
   const now = new Date()
 
@@ -9,7 +9,7 @@ export function getCurrentTime() {
   return `${hours}:${minutes}:${seconds}`
 }
 
-export function getCurrentDate() {
+export function getCurrentDate () :string {
 
   const currentDate = new Date(); 
 

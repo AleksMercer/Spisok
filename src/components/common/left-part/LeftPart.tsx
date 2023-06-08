@@ -1,3 +1,4 @@
+import InfoWindow from './components/InfoWindow';
 import FolderActions from './components/FolderActions';
 
 function LeftPart (props: any): JSX.Element {
@@ -8,17 +9,15 @@ function LeftPart (props: any): JSX.Element {
 
     <div className='left-part'>
 
-      <header> {/*brand + info (btn here should show a different guides for every app) */} 
+      <header> {/* brand + info */} 
 
         <img className='app-name' src={appNamePic} alt="" />
 
-        <button className='info-btn'>
-          <img className='icons' src={require("./../icons/information.png")} alt="?" />
-        </button>
-
+        <InfoWindow />
+      
       </header>
 
-      <FolderActions /> {/* add folders */}
+      <FolderActions /> {/* main and footer */}
 
     </div>
   )

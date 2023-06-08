@@ -1,7 +1,7 @@
 .proboval-app, .garderob-app, .dela-app {
   
   .left-part, .middle-part, .right-part { // header, main, footer
-    @include grid_template( auto 1fr auto / 1fr );
+    @include grid_template( auto 1fr auto / minmax(175px, 1fr) );
     height: 96.5vh;
     row-gap: 1%;
 
@@ -46,6 +46,58 @@
 
   .left-part {
     padding: 2%;
+
+    header {
+      .information {
+        @include grid_template(1fr auto / 1fr);
+
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+
+        padding: 1%;
+        width: 90%;
+        height: 90%;
+
+        border: $thin-border;
+        background-color: rgba(0, 0, 0, 0.75);
+
+        &__close {
+          position: absolute;
+          top: 0;
+          right: 0;
+        }
+
+        &__text {
+          @include grid_template(repeat(10, 1fr) / 1fr);
+          align-content: space-between;
+          text-align: justify;
+          overflow: hidden;    
+
+          .info-sub-title {
+            font-size: $title-font-rem;            
+            text-align: center;
+          }
+
+          .info-text {
+            font-size: $middle-rem;
+            line-height: 30px;
+          }
+        }
+
+        &__deleteAll-btn {
+          padding: 1%;
+          font-size: $title-font-rem;
+          background-color: rgba(30, 225, 255, 0.5);
+        }
+
+        &__deleteAll-btn:hover {
+          background-color: rgba(255, 0, 0, 0.5);
+        }
+      }
+    }
 
     main {
       padding: 4%;
@@ -171,13 +223,12 @@
       }
 
       textarea {
-        background-color: rgba(255, 255, 255, 0.2);
+        background-color: rgba(255, 255, 255, 0.05);
         resize: none;
         max-height: 100%;     
       }
 
       .element-content {        
-        background-color: rgba(255, 255, 255, 0.05);
         word-break: break-word;
         white-space: break-spaces;
         min-height: 26px;

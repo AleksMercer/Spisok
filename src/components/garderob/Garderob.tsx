@@ -1,11 +1,9 @@
-function Garderob(): JSX.Element {
+function Garderob (): JSX.Element {
 
   return (
     <div className='garderob-app'>
       <div className="filter wrapper">
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
+          <img className="in-developing" src={require('./media/inDeveloping.webp')} alt="" />
       </div>
     </div>
   )

@@ -1,4 +1,5 @@
-function Error404() {
+function Error404 (): JSX.Element {
+  
   return (
     <div className='error'>
       <div className='filter'>
