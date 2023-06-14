@@ -1,21 +1,12 @@
-import InfoWindow from './components/InfoWindow';
+import Header from './components/Header';
 import FolderActions from './components/FolderActions';
 
-function LeftPart (props: any): JSX.Element {
-
-  const appNamePic = props.picture
+function LeftPart (): JSX.Element {
   
   return (
-
     <div className='left-part'>
 
-      <header> {/* brand + info */} 
-
-        <img className='app-name' src={appNamePic} alt="" />
-
-        <InfoWindow />
-      
-      </header>
+      <Header /> {/* brand + info */} 
 
       <FolderActions /> {/* main and footer */}
 

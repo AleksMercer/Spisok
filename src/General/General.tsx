@@ -9,7 +9,8 @@ import Dela     from '../components/dela/Dela';
 import Garderob from '../components/garderob/Garderob';
 import Proboval from '../components/proboval/Proboval';
 
-( async () => { // init db and stores
+/* init db and stores */
+( async () => {
   await openDB("Spisok_DB", 1, {
     upgrade(db) {
       const store = db.createObjectStore("Spisok_Store")

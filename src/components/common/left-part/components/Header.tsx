@@ -1,7 +1,11 @@
 import { useState } from 'react';
 import { openDB } from 'idb';
 
+import { useAppContext } from '../../../dela/Dela';
+
 function InfoWindow (): JSX.Element {
+
+  const { appLogo } = useAppContext() // context from Dela.tsx 
 
   const [infoWindow, setInfoWindow] = useState<boolean>(false)
 
@@ -22,7 +26,9 @@ function InfoWindow (): JSX.Element {
   }
   
   return (
-    <>
+    <header>
+      <img className='app-name' src={appLogo} alt="" />
+
       <button className='info-btn' onClick={() => setInfoWindow(true)}>
         <img className='icons' src={require("./../../icons/information.png")} alt="?" />
       </button>
@@ -55,7 +61,7 @@ function InfoWindow (): JSX.Element {
       : 
         <></>
       }
-    </>
+    </header>
   )
 }
 

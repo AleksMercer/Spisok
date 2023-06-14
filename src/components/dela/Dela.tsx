@@ -10,6 +10,7 @@ export const useAppContext = () => useContext(AppContext)
 function Dela (): JSX.Element {
   
   const appName = "Dela"
+  const appLogo = require('./media/delaB.webp')
 
   const [groupsUpdate,    setGroupsUpdate   ] = useState<boolean>(true) //use for update list groups at left part into folder
   const [elementsUpdate,  setElementsUpdate ] = useState<boolean>(true) //use for update list elements at middle part into group
@@ -19,14 +20,14 @@ function Dela (): JSX.Element {
 
   const [folderName,  setFolderName ] = useState<string>('') // init from groupAction.tsx
   const [groupName,   setGroupName  ] = useState<string>('') // init from groupAction.tsx
-  const [elementName, setElementName] = useState<string>('')
+  const [elementName, setElementName] = useState<string>('') // init from elementActions.tsx and from right part components
 
   return (
     <div className='dela-app'>
       <div className="filter wrapper">
 
         <AppContext.Provider value={{
-          appName,
+          appName, appLogo,
 
           groupsUpdate,    setGroupsUpdate,
           elementsUpdate,  setElementsUpdate,
@@ -39,9 +40,7 @@ function Dela (): JSX.Element {
           elementName, setElementName
         }}>
 
-          <LeftPart 
-            picture={require('./media/delaB.webp')}
-          />
+          <LeftPart />
           
           <MiddlePart />
 
