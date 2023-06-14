@@ -15,6 +15,6 @@ function RightPart(): JSX.Element {
 
     </div>
   )
-}
+};
 
 export default RightPart

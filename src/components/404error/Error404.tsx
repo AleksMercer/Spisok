@@ -8,6 +8,6 @@ function Error404 (): JSX.Element {
       </div>  
     </div>
   )
-}
+};
 
 export default Error404

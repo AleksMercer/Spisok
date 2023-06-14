@@ -19,7 +19,7 @@ function GroupRename (): JSX.Element {
 
   const inputRef = useRef<HTMLInputElement>(null) // for detected click outside the input
   
-  useEffect(() => { setText(groupName) }, [groupName])
+  useEffect(() => { setText(groupName) }, [groupName]);
 
   useEffect(() => { /* add or remove listener */
 
@@ -31,9 +31,9 @@ function GroupRename (): JSX.Element {
 
     return () => document.removeEventListener('mousedown', clickOutside)
 
-  }, [isEditing])
+  }, [isEditing]);
 
-  const blur = () => { /* actions after editing */
+  const blur = (): void => { /* actions after editing */
     setIsEditing(false) 
 
     if (text.trim() === '' || allGroupsAtFolder.includes(text) || groupName === text ) {
@@ -44,15 +44,15 @@ function GroupRename (): JSX.Element {
     renameGroup(text)
     setGroupName(text)
     setGroupsUpdate(!groupsUpdate)
-  }
+  };
 
-  const clickOutside = () => { /* actions after click outside */
+  const clickOutside = (): void => { /* actions after click outside */
     if (!inputRef.current) {
       blur()  // here same logic at blur-func, and i just call blur-func
     }
-  }
+  };
 
-  async function renameGroup(newGroupName: string) { /* rename folder into indexedDB */
+  async function renameGroup(newGroupName: string): Promise<void> { /* rename folder into indexedDB */
 
     const db = await openDB("Spisok_DB", 1)
     const tx = db.transaction("Spisok_Store", "readwrite")
@@ -69,7 +69,7 @@ function GroupRename (): JSX.Element {
     } catch (error) {
       console.error('renameGroup() --- error:', error)
     }
-  }
+  };
 
   return (
     <header> {/*selected Group name */}
@@ -95,6 +95,6 @@ function GroupRename (): JSX.Element {
 
     </header>
   )
-}
+};
 
 export default GroupRename

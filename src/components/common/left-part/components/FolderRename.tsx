@@ -26,9 +26,9 @@ function FolderRename (props: any): JSX.Element {
 
     return () => document.removeEventListener('mousedown', clickOutside)
 
-  }, [isEditing, text])
+  }, [isEditing, text]);
 
-  const blur = () => { /* actions after editing */
+  const blur = (): void => { /* actions after editing */
 
     setIsEditing(false) 
 
@@ -43,15 +43,15 @@ function FolderRename (props: any): JSX.Element {
 
     renameFolder(text)
     update()
-  }
+  };
 
-  const clickOutside = () => { /* actions after click outside */
+  const clickOutside = (): void => { /* actions after click outside */
     if (!inputRef.current) {
       blur()  // here same logic at blur-func, and i just call blur-func
     }
-  }
+  };
   
-  async function renameFolder(newFolderName: string) { /* rename folder into indexedDB */
+  async function renameFolder(newFolderName: string): Promise<void> { /* rename folder into indexedDB */
 
     const db = await openDB("Spisok_DB", 1)
     const tx = db.transaction("Spisok_Store", "readwrite")
@@ -68,7 +68,7 @@ function FolderRename (props: any): JSX.Element {
     } catch (error) {
       console.error('renameFolder() --- error:', error)
     }
-  }
+  };
 
   return (
     <>
@@ -89,6 +89,6 @@ function FolderRename (props: any): JSX.Element {
       }
     </>
   )
-}
+};
 
 export default FolderRename

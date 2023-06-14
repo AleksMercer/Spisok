@@ -12,6 +12,6 @@ function LeftPart (): JSX.Element {
 
     </div>
   )
-}
+};
 
 export default LeftPart

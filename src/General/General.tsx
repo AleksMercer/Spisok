@@ -10,7 +10,7 @@ import Garderob from '../components/garderob/Garderob';
 import Proboval from '../components/proboval/Proboval';
 
 /* init db and stores */
-( async () => {
+( async (): Promise<void> => {
   await openDB("Spisok_DB", 1, {
     upgrade(db) {
       const store = db.createObjectStore("Spisok_Store")
@@ -19,22 +19,24 @@ import Proboval from '../components/proboval/Proboval';
       store.put({}, "Garderob")
     }
   })
-}) ()
+}) ();
 
 function General(): JSX.Element {
   
   return (
     <Routes>
-      <Route path="*"                 element={ <Error404 /> } /> { /*if page not found*/ }
+      <Route path="*"                 element={<Error404 />} /> { /*if page not found*/ }
       
-      <Route path="/Spisok"           element={ <Mainpage /> } />
+      <Route path="/Spisok"           element={<Mainpage />} />
 
-      <Route path="/Spisok/Dela"      element={ <Dela /> } />
-      <Route path="/Spisok/Garderob"  element={ <Garderob /> } />
-      <Route path="/Spisok/Proboval"  element={ <Proboval /> } />
+      <Route path="/Spisok/Dela"      element={<Dela />} />
+
+      <Route path="/Spisok/Garderob"  element={<Garderob />} />
+
+      <Route path="/Spisok/Proboval"  element={<Proboval />} />
     </Routes>
   )
-}
+};
 
 
 export default General;

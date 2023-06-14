@@ -17,9 +17,9 @@ function ElementRename (): JSX.Element {
   const [isEditing, setIsEditing] =  useState<boolean>(false)
   const [text,      setText     ] =  useState<string>('')
 
-  const inputRef = useRef<HTMLInputElement>(null) // for detected click outside the input
+  const inputRef = useRef<HTMLInputElement>(null)  // for detected click outside the input
   
-  useEffect(() => { setText(elementName) }, [elementName])
+  useEffect(() => { setText(elementName) }, [elementName]);
 
   useEffect(() => { /* add or remove listener */
 
@@ -31,9 +31,9 @@ function ElementRename (): JSX.Element {
 
     return () => document.removeEventListener('mousedown', clickOutside)
 
-  }, [isEditing])
+  }, [isEditing]);
 
-  const blur = () => { /* actions after editing */
+  const blur = (): void => { /* actions after editing */
     setIsEditing(false) 
 
     if (text.trim() === '' || allElementsAtGroup.includes(text) || elementName === text ) {
@@ -46,13 +46,13 @@ function ElementRename (): JSX.Element {
     setElementsUpdate(!elementsUpdate)
   }
 
-  const clickOutside = () => { /* actions after click outside */
+  const clickOutside = (): void => { /* actions after click outside */
     if (!inputRef.current) {
       blur()  // here same logic at blur-func, and i just call blur-func
     }
   }
 
-  async function renameElement(newElementName: string) { /* rename folder into indexedDB */
+  async function renameElement(newElementName: string): Promise<void> { /* rename folder into indexedDB */
 
     const db = await openDB("Spisok_DB", 1)
     const tx = db.transaction("Spisok_Store", "readwrite")
@@ -91,6 +91,6 @@ function ElementRename (): JSX.Element {
       }
     </header>
   )
-}
+};
 
 export default ElementRename

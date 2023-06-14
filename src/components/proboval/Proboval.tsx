@@ -7,6 +7,6 @@ function Proboval (): JSX.Element {
       </div>
     </div>
   )
-}
+};
 
 export default Proboval

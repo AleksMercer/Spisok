@@ -17,8 +17,8 @@ function ElementContent (): JSX.Element {
 
   const textAreaRef = useRef<HTMLTextAreaElement>(null) // for detected click outside the input
 
-  useEffect(() => { setElementName('') }, [groupName])
-  useEffect(() => { contentAccess()    }, [elementName])
+  useEffect(() => { setElementName('') }, [groupName]);
+  useEffect(() => { contentAccess()    }, [elementName]);
 
   useEffect(() => { /* add or remove listener */
 
@@ -30,20 +30,20 @@ function ElementContent (): JSX.Element {
 
     return () => document.removeEventListener('mousedown', clickOutside)
 
-  }, [isEditing])
+  }, [isEditing]);
 
-  const blur = () => { /* actions after editing */
+  const blur = (): void => { /* actions after editing */
     setIsEditing(false) 
     contentChanged(content)
-  }
+  };
 
-  const clickOutside = () => { /* actions after click outside */
+  const clickOutside = (): void => { /* actions after click outside */
     if (!textAreaRef.current) {
       blur()  // here same logic at blur-func, and i just call blur-func
     }
-  }
+  };
 
-  const handleFocus = (event: React.FocusEvent<HTMLTextAreaElement>) => { /* for set cursor to the end of string */
+  const handleFocus = (event: React.FocusEvent<HTMLTextAreaElement>): void => { /* for set cursor to the end of string */
     const { target } = event;
     const targetValue = target.value;
     target.setSelectionRange(targetValue.length, targetValue.length);
@@ -51,9 +51,9 @@ function ElementContent (): JSX.Element {
     if (textAreaRef.current) {
       textAreaRef.current.style.height = `${textAreaRef.current.scrollHeight}px`;
     }
-  }
+  };
 
-  async function contentAccess() {
+  async function contentAccess(): Promise<void> {
 
     if (elementName === '') return
 
@@ -71,9 +71,9 @@ function ElementContent (): JSX.Element {
     } catch (error) {
       console.error('contentAccess() --- error:', error)
     }
-  }
+  };
 
-  async function contentChanged(newContent: string) { /* changed content into indexedDB */
+  async function contentChanged(newContent: string): Promise<void> { /* changed content into indexedDB */
 
     const db = await openDB("Spisok_DB", 1)
     const tx = db.transaction("Spisok_Store", "readwrite")
@@ -91,13 +91,14 @@ function ElementContent (): JSX.Element {
     } catch (error) {
       console.error('contentChanged() --- error:', error)
     }
-  }
+  };
 
   return (
     <main> {/*element info */}
       { isEditing 
         ? 
         <textarea
+          name="content"
           ref={textAreaRef}
           value={content}
           onChange={ (e) => setContent(e.target.value) }
@@ -120,6 +121,6 @@ function ElementContent (): JSX.Element {
       }
     </main>
   )
-}
+};
 
 export default ElementContent

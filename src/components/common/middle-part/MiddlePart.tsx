@@ -12,6 +12,6 @@ function MiddlePart (): JSX.Element {
 
     </div>
   )
-}
+};
 
 export default MiddlePart

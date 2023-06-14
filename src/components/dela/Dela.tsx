@@ -4,8 +4,8 @@ import LeftPart from '../common/left-part/LeftPart';
 import MiddlePart from '../common/middle-part/MiddlePart';
 import RightPart from '../common/right-part/RightPart';
 
-const AppContext = createContext<any>({})
-export const useAppContext = () => useContext(AppContext)
+const AppContext = createContext<any>({});
+export const useAppContext = () => useContext(AppContext);
 
 function Dela (): JSX.Element {
   
@@ -29,10 +29,10 @@ function Dela (): JSX.Element {
         <AppContext.Provider value={{
           appName, appLogo,
 
-          groupsUpdate,    setGroupsUpdate,
-          elementsUpdate,  setElementsUpdate,
+          groupsUpdate,   setGroupsUpdate,
+          elementsUpdate, setElementsUpdate,
 
-          allGroupsAtFolder, setAllGroupsAtFolder,
+          allGroupsAtFolder,  setAllGroupsAtFolder,
           allElementsAtGroup, setAllElementsAtGroup,
 
           folderName,  setFolderName,
@@ -51,6 +51,6 @@ function Dela (): JSX.Element {
       </div>
     </div>
   )
-}
+};
 
 export default Dela

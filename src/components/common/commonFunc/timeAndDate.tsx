@@ -7,11 +7,11 @@ export function getCurrentTime () :string {
   const seconds = String(now.getSeconds()).padStart(2, '0')
   
   return `${hours}:${minutes}:${seconds}`
-}
+};
 
 export function getCurrentDate () :string {
 
-  const currentDate = new Date(); 
+  const currentDate = new Date()
 
   const day = currentDate.getDate()
   const month = currentDate.getMonth() + 1
@@ -21,4 +21,4 @@ export function getCurrentDate () :string {
   const formattedMonth = month < 10 ? `0${month}` : month
 
   return `${formattedDay}.${formattedMonth}.${year}`
-}
+};

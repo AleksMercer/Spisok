@@ -9,7 +9,7 @@ function InfoWindow (): JSX.Element {
 
   const [infoWindow, setInfoWindow] = useState<boolean>(false)
 
-  async function updateAppDB() {  /* delete app from indexedDB and create again */
+  async function updateAppDB(): Promise<void> {  /* delete app from indexedDB and create again */
 
     const db = await openDB("Spisok_DB", 1)
     const tx = db.transaction("Spisok_Store", "readwrite")
@@ -23,7 +23,7 @@ function InfoWindow (): JSX.Element {
     } catch (error) {
       console.error('updateAppDB() --- error:', error)
     }
-  }
+  };
   
   return (
     <header>
@@ -63,6 +63,6 @@ function InfoWindow (): JSX.Element {
       }
     </header>
   )
-}
+};
 
 export default InfoWindow

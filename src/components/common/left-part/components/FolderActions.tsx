@@ -19,9 +19,9 @@ function FolderActions (): JSX.Element {
   
   const [folderKeys, setFolderKeys] = useState<string[]>([])  // get all folders name to folderKeys from idb
 
-  useEffect(() => { getFolders() }, [])  // init app with all folders
+  useEffect(() => { getFolders() }, []);  // init app with all folders
 
-  async function getFolders () { /* get all folders name from idb */
+  async function getFolders (): Promise<void> { /* get all folders name from idb */
 
     const db = await openDB("Spisok_DB", 1)
     const tx = db.transaction("Spisok_Store", "readonly")
@@ -36,9 +36,9 @@ function FolderActions (): JSX.Element {
     } catch (error) {
       console.error('getFolders() --- error:', error)
     }
-  }
+  };
   
-  async function addFolder () {  /* add new folder into idb */
+  async function addFolder (): Promise<void> {  /* add new folder into idb */
 
     const db = await openDB("Spisok_DB", 1)
     const tx = db.transaction("Spisok_Store", "readwrite")
@@ -54,9 +54,9 @@ function FolderActions (): JSX.Element {
     } catch (error) {
       console.error('addFolder() --- error:', error)
     }
-  }
+  };
 
-  async function deleteFolder (folder: string) {  /* delete folder from indexedDB */
+  async function deleteFolder (folder: string): Promise<void> {  /* delete folder from indexedDB */
 
     if (folder === folderName) {
       setFolderName('')
@@ -78,7 +78,7 @@ function FolderActions (): JSX.Element {
     } catch (error) {
       console.error('deleteFolder() --- error:', error)
     }
-  }
+  };
 
   return (
     <>
@@ -124,6 +124,6 @@ function FolderActions (): JSX.Element {
       </footer>
     </>
   )
-}
+};
 
 export default FolderActions

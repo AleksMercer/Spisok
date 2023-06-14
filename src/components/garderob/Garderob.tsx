@@ -7,6 +7,6 @@ function Garderob (): JSX.Element {
       </div>
     </div>
   )
-}
+};
 
 export default Garderob

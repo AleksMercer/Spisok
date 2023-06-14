@@ -15,11 +15,11 @@ function ElementActions (): JSX.Element {
     setElementName
   } = useAppContext()         
 
-  const [elementKeys, setelementKeys] = useState<(any)[][]>([]);   // get all elements name to elementKeys from idb
+  const [elementKeys, setelementKeys] = useState<(any)[][]>([]);  // get all elements name to elementKeys from idb
   
-  useEffect(() => { getElements() }, [groupName, elementsUpdate])
+  useEffect(() => { getElements() }, [groupName, elementsUpdate]);
   
-  async function getElements () { /* get all Elements name from indexedDB */
+  async function getElements (): Promise<void> { /* get all Elements name from indexedDB */
 
     if (folderName === '' || groupName === '') return
 
@@ -37,9 +37,9 @@ function ElementActions (): JSX.Element {
     } catch (error) {
       console.error('getElements() --- error:', error)
     }
-  }
+  };
 
-  async function addElement () {  /* add new folder into indexedDB */
+  async function addElement (): Promise<void> {  /* add new folder into indexedDB */
 
     if (folderName === '' || groupName === '') return
 
@@ -60,9 +60,9 @@ function ElementActions (): JSX.Element {
     } catch (error) {
       console.error('addElement() --- error:', error)
     }
-  }
+  };
 
-  async function checkElement (key: string) {  /* strikes out & return name of element */
+  async function checkElement (key: string): Promise<void> {  /* strikes out & return name of element */
 
     const db = await openDB("Spisok_DB", 1)
     const tx = db.transaction("Spisok_Store", "readwrite")
@@ -80,7 +80,7 @@ function ElementActions (): JSX.Element {
     } catch (error) {
       console.error('checkElement() --- error:', error)
     }
-  }
+  };
 
   return (
     <>
@@ -126,6 +126,6 @@ function ElementActions (): JSX.Element {
       </footer>
     </>
   )
-}
+};
 
 export default ElementActions

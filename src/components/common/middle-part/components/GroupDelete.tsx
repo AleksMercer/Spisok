@@ -12,7 +12,7 @@ function GroupDelete (): JSX.Element {
     setElementName
   } = useAppContext() 
 
-  async function deleteGroup () {  /* delete group from indexedDB */
+  async function deleteGroup (): Promise<void> {  /* delete group from indexedDB */
 
     if (folderName === '' || groupName === '') return
 
@@ -34,7 +34,7 @@ function GroupDelete (): JSX.Element {
     } catch (error) {
       console.error('deleteGroup() --- error:', error)
     }
-  }
+  };
 
   return (
     <button className='delete-btn' onClick={() => {
@@ -45,6 +45,6 @@ function GroupDelete (): JSX.Element {
       
     </button>
   )
-}
+};
 
 export default GroupDelete

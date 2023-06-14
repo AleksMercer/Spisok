@@ -5,8 +5,10 @@ import { useAppContext } from '../../../dela/Dela';
 import { getCurrentTime } from '../../commonFunc/timeAndDate';
 
 function GroupActions (props: any): JSX.Element {
-
-  const { // context from Dela.tsx 
+  
+  const folderName = props.folderName  // name of folder in which the group
+  
+  const {  // context from Dela.tsx 
     appName, 
     groupsUpdate,
     setAllGroupsAtFolder, 
@@ -14,13 +16,11 @@ function GroupActions (props: any): JSX.Element {
     setGroupName 
   } = useAppContext() 
   
-  const folderName = props.folderName                       // name of folder in which the group
-  
   const [groupKeys, setGroupKeys] = useState<string[]>([])  // get all groups name to groupKeys from idb
 
-  useEffect(() => { getGroups() }, [groupsUpdate])          // update with all groups & and call when delete or rename group
+  useEffect(() => { getGroups() }, [groupsUpdate]);  // update with all groups & and call when delete or rename group
 
-  async function getGroups () { /* get all groups name from folder */
+  async function getGroups (): Promise<void> { /* get all groups name from folder */
 
     const db = await openDB("Spisok_DB", 1)
     const tx = db.transaction("Spisok_Store", "readonly")
@@ -35,9 +35,9 @@ function GroupActions (props: any): JSX.Element {
     } catch (error) {
       console.error('getGroups() --- error:', error)
     }
-  }
+  };
 
-  async function addGroup () {  /* add new group into folder */
+  async function addGroup (): Promise<void> {  /* add new group into folder */
 
     const db = await openDB("Spisok_DB", 1)
     const tx = db.transaction("Spisok_Store", "readwrite")
@@ -53,7 +53,7 @@ function GroupActions (props: any): JSX.Element {
     } catch (error) {
       console.error('addGroup() --- error:', error)
     }
-  }
+  };
 
   return (
     <>
@@ -85,6 +85,6 @@ function GroupActions (props: any): JSX.Element {
       </button>
     </>
   )
-}
+};
 
 export default GroupActions

@@ -12,7 +12,7 @@ function ElementDelete (): JSX.Element {
     elementName, setElementName
   } = useAppContext() 
 
-  async function elementDelete () {  /* delete group from indexedDB */
+  async function elementDelete (): Promise<void> {  /* delete group from indexedDB */
 
     if (folderName === '' || groupName === '' || elementName === '') return
 
@@ -32,7 +32,7 @@ function ElementDelete (): JSX.Element {
     } catch (error) {
       console.error('elementDelete() --- error:', error)
     }
-  }
+  };
 
   return (
     <footer> {/*delete elemet btn */}
@@ -44,6 +44,6 @@ function ElementDelete (): JSX.Element {
       </button>
     </footer>
   )
-}
+};
 
 export default ElementDelete
