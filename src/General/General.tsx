@@ -11,6 +11,12 @@ import Proboval from '../components/proboval/Proboval';
 
 /* init db and stores */
 ( async (): Promise<void> => {
+
+  if (!('indexedDB' in window)) {
+    alert("Your browser does not support idb, you can't use this app.")
+    return 
+  }
+
   await openDB("Spisok_DB", 1, {
     upgrade(db) {
       const store = db.createObjectStore("Spisok_Store")
