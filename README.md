@@ -5,7 +5,6 @@
 ## 📑 Features of "Dela"
   *	Add / Rename / Delete - «folder» > «group» > «element» > «text information»
   *	Can install as an app to android / windows devices from google chrome
-  *	Can be offline app
 # 🔧 Technical part
 ## 📖 More about the project
   *	**Project Status**:
